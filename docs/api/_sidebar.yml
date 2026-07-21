@@ -3,7 +3,8 @@ website:
   - contents:
     - api/index.qmd
     - contents:
-      - api/seaborn.qmd
+      - api/iplot.qmd
+      - api/iplot_settings.qmd
       section: Some section
     id: api
   - id: dummy-sidebar

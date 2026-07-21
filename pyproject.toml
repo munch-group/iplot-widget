@@ -5,13 +5,13 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "iplot"
 version = "0.1.10"
-description = "Project description"
+description = "Interactive seaborn plotting widgets for Jupyter"
 authors = [
-    {name = "Your Name", email = "your@email.com"}
+    {name = "Kasper Munch", email = "kaspermunch@birc.au.dk"}
 ]
 readme = "README.md"
 license = {text = "MIT"}
-requires-python = ">=3.8"
+requires-python = ">=3.9,<3.14"
 classifiers = [
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
@@ -41,105 +41,98 @@ exclude = ["test*"]
 [tool.setuptools.package-data]
 iplot = ["data/*.txt", "data/*.csv", "data/*.pickle", "data/*.h5"]
 
-[tool.pixi.project]
+[tool.pixi.workspace]
 name = "iplot"
 version = "0.1.10"
-description = "Project description"
-authors = ["Your Name <your@email.com>"]
-channels = ["conda-forge"]
-platforms = ["linux-64", "osx-64", "osx-arm64", "win-64"]
+description = "Interactive seaborn plotting widgets for Jupyter"
+authors = ["Kasper Munch <kaspermunch@birc.au.dk>"]
+channels = ["conda-forge", "munch-group"]
+platforms = ["osx-arm64", "linux-64"]
 
 [tool.pixi.dependencies]
-python = ">=3.8"
+python = ">=3.9,<3.14"
+pytest = "*"
+jupyter = "*"
+quarto = "*"
+quartodoc = "*"
+griffe = "<1"
+nbconvert = "*"
+anthropic = "*"
+pip = "*"
+nodejs = "*"
 git = "*"
 git-lfs = "*"
 gh = "*"
-conda-build = "*"
-cryptography = "*"
-jupyterlab = ">=4"
-nbdime = "*"
-nodejs = "*"
+ipython = "*"
 seaborn = "*"
-pytables = "*"
-scipy = "*"
-scikit-learn = "*"
-statsmodels = "*"
-pip = "*"
-
-# [tool.pixi.pypi-dependencies]
-# Optional PyPI dependencies can be added here
-# Note: Some packages may not be available across all platforms
+nbdime = "*"
 
 [tool.pixi.environments]
 default = {solve-group = "default"}
-dev = {features = ["dev"], solve-group = "default"}
 
-[tool.pixi.feature.dev.dependencies]
-pytest = "*"
-black = "*"
-ruff = "*"
-
-[tool.pixi.tasks.init-project]
-cmd = "./.scripts/template_init.py && ./.scripts/init-project.sh -y"
-description = "Initialize template and remove project-specific files"
+[tool.pixi.tasks.init]
+cmd = "python ./scripts/rename.py && gh repo set-default https://github.com/munch-group/$(basename $(git rev-parse --show-toplevel)) && git add src && git add -u"
 
 [tool.pixi.tasks.install-claude]
 cmd = "npm install -g @anthropic-ai/claude-code"
 
 [tool.pixi.tasks.claude]
-cmd = "bash ./.scripts/claude-session.sh {{ '--new' if 'new' in new }}"
+cmd = "bash ./scripts/claude-session.sh {{ '--new' if 'new' in new }}"
 args = [ { arg = "new", default = "" } ]
-
-[tool.pixi.tasks.init-library]
-cmd = "./.scripts/template_init.py && ./.scripts/init-library.sh -y"
-description = "Remove files not relevant to library development"
-
-# [tool.pixi.tasks.init-template]
-# cmd = "./.scripts/template_init.py"
-# description = "Initialize template by renaming project files"
 
 [tool.pixi.tasks.install-dev]
 cmd = "pip install -e ."
-#cmd = "pip install --no-build-isolation --no-deps --disable-pip-version-check -e ."
 description = "Install the package in development mode"
 
-[tool.pixi.tasks.docs]
-cmd = "./.scripts/docs-run-notebooks.sh && ./.scripts/docs-build-render.sh"
-description = "Run documentation notebooks and build quartodoc api docs"
+[tool.pixi.tasks.notebook]
+args = [ { "arg" = "notebook" } ]
+cmd = "jupyter nbconvert --log-level=WARN --to notebook --execute --inplace --TagRemovePreprocessor.enabled=True --TagRemovePreprocessor.remove_cell_tags='{\"skip-execution\"}' {{ notebook }}"
+description = "Execute a single notebook in place"
 
-[tool.pixi.tasks.git-remove-untracked]
-cmd = "git clean -fd"
+[tool.pixi.tasks.api]
+cmd = "./scripts/docs-build-render.sh"
+description = "Build quartodoc api doc pages"
+
+[tool.pixi.tasks.docs]
+cmd = "./scripts/docs-run-notebooks.sh"
+description = "Execute documentation notebooks in-place"
+
+[tool.pixi.tasks.clean]
+cmd = "git clean -id"
 description = "Removes untracked files and directories but respects your .gitignores"
 
 [tool.pixi.tasks.test]
-cmd = "python -m unittest"
+cmd = "mkdir -p tests/pytest/tmp && jupyter nbconvert docs/pages/tutorial/*.ipynb --to script --TagRemovePreprocessor.enabled=True --TagRemovePreprocessor.remove_cell_tags='{\"skip-execution\"}' --output-dir tests/pytest/tmp && pytest tests/pytest/"
 description = "Run tests"
 
- 
+[tool.pixi.tasks.commit]
+cmd = "./scripts/git-commit.sh"
+description = "Commit staged changes with an AI-drafted message, then push"
 
-# setup-kernel = "python -m ipykernel install --user --name franklin --display-name 'Franklin Python'"
-# quarto-render = { cmd = "quarto render", env = { QUARTO_PYTHON = ".pixi/envs/default/bin/python" } }
-
-[tool.pixi.tasks.bump-version]
+[tool.pixi.tasks.bump]
 args = [
   { "arg" = "kind", "default" = "patch" },  # can be patch, minor, major
   { "arg" = "flag", "default" = "" },     # can be --pre, --release
 ]
-cmd = "./.scripts/bump_version.py --{{ kind }} {{ flag }} &&  git add -u &&  git commit -m '{{ kind }} {{ flag }} version bump' && git push" 
-description = "Bump version patch and build/release conda packages"
+cmd = "./scripts/bump_version.py --{{ kind }} {{ flag }} && git add pyproject.toml && git commit -m '{{ kind }} {{ flag }} version bump'"
+description = "Bump version and commit pyproject.toml"
 
-[tool.pixi.tasks.bump-changelog]
-cmd = "./.scripts/bump_changelog.py --yes"
-description = "Bump version patch and build/release conda packages"
-
-[tool.pixi.tasks.acp]
+[tool.pixi.tasks.release]
 args = [
-  { "arg" = "message", "default" = "update" },  # can be --patch, --minor, --major
+  { "arg" = "kind", "default" = "patch" },  # can be patch, minor, major
+  { "arg" = "flag", "default" = "" },     # can be --pre, --release
 ]
-cmd = "git add -u ; git commit -m '{{ message }}' ; git push"
-description = "git add commit push of tracked files with optional message"
+cmd = "./scripts/bump_version.py --{{ kind }} {{ flag }} && git add pyproject.toml && git commit -m '{{ kind }} {{ flag }} version bump' && git push && ./scripts/github-release.sh"
+description = "Bump version patch and push tag to build/upload conda/pypi packages"
 
-[tool.pixi.tasks.github-release]
-cmd = "./.scripts/release-tag.sh"
-description = "Release latest version on Github"
+[tool.pixi.tasks.version]
+args = [
+  { "arg" = "kind", "default" = "patch" },  # can be patch, minor, major
+  { "arg" = "flag", "default" = "" },     # can be --pre, --release
+]
+cmd = "./scripts/bump_version.py --{{ kind }} {{ flag }} && git add pyproject.toml && git commit -m '{{ kind }} {{ flag }} version bump' && git push && ./scripts/github-release.sh"
+depends-on = ["test", "api", "docs", "commit"]
+description = "Bump version patch and push tag to build/upload conda/pypi packages"
 
+[tool.pytest.ini_options]
+testpaths = ["tests/pytest"]

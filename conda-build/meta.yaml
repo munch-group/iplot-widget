@@ -9,7 +9,7 @@ source:
 
 build:
   number: 0
-  script: $PYTHON -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv
   python_version_independent: true
   entry_points:
     - iplot = iplot:iplot
@@ -18,13 +18,11 @@ requirements:
   host:
     - python
     - pip
-    - setuptools>=65.0    
+    - setuptools>=65.0
   run:  # your library dependencies
     {% for dep in pyproject.get("project").get("dependencies") %}
     - {{ dep.lower() }}
-    {% endfor %}  
-    - git
-    - gitui
+    {% endfor %}
 
 channels:  # channels for your library dependencies
   - conda-forge

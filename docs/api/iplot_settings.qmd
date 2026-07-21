@@ -1,0 +1,68 @@
+# iplot_settings { #iplot.iplot_settings }
+
+```python
+iplot.iplot_settings(**kwargs)
+```
+
+Calling `iplot.seaborn with only the `data` positional argument will display dropdowns for all plot dimensions and include 
+all axis level seaborn graphics in the plot drowpdown. This function allows you limit the available plot dimensions and/or set their
+default values. It is also possible to set the plot theme by providing a dictionary with keyword arguments for seaborn.set_theme().
+
+## Parameters {.doc-section .doc-section-parameters}
+
+<code>[**graphics**]{.parameter-name} [:]{.parameter-annotation-sep} [[list](`list`)]{.parameter-annotation}</code>
+
+:   A list of seaborn plotting functions to be used. Default is a list of common seaborn plotting functions.
+
+<code>[**theme**]{.parameter-name} [:]{.parameter-annotation-sep} [[dict](`dict`)]{.parameter-annotation}</code>
+
+:   Dictionary with keyword arguments for seaborn.set_theme().
+
+<code>[**x**]{.parameter-name} [:]{.parameter-annotation-sep} [[str](`str`)]{.parameter-annotation}</code>
+
+:   Default value for x-axis dropdown.
+
+<code>[**y**]{.parameter-name} [:]{.parameter-annotation-sep} [[str](`str`)]{.parameter-annotation}</code>
+
+:   Default value for y-axis dropdown.
+
+<code>[**hue**]{.parameter-name} [:]{.parameter-annotation-sep} [[str](`str`)]{.parameter-annotation}</code>
+
+:   Default value for hue dropdown.
+
+<code>[**col**]{.parameter-name} [:]{.parameter-annotation-sep} [[str](`str`)]{.parameter-annotation}</code>
+
+:   Default value for col dropdown.
+
+<code>[**row**]{.parameter-name} [:]{.parameter-annotation-sep} [[str](`str`)]{.parameter-annotation}</code>
+
+:   Default value for row dropdown.
+
+## Returns {.doc-section .doc-section-returns}
+
+<code>[]{.parameter-name} [:]{.parameter-annotation-sep} [None]{.parameter-annotation}</code>
+
+:   None
+
+## Examples {.doc-section .doc-section-examples}
+
+Limit the plot dimensions to 'x', 'y' and set the available graphics to 'scatterplot' and 'lineplot'.
+
+```python
+import iplot as pw
+pw.set_options(x=None, y=None, graphics=[sns.scatterplot, sns.lineplot])
+```
+
+Do the same but set the default values for 'x' and 'y' to 'flipper_length_mm' and 'body_mass_g' respectively.
+
+ ```python
+import iplot as pw
+pw.set_options(x='flipper_length_mm', y='body_mass_g', graphics=[sns.scatterplot, sns.lineplot])
+```
+
+Set the color palette to 'colorblind':
+
+```python
+import iplot as pw
+pw.set_options(theme={'palette': 'colorblind'})
+```

@@ -1,66 +1,53 @@
 
 ![](https://github.com/munch-group/iplot/actions/workflows/quarto-publish.yml/badge.svg?event=push)
 
-# Template repository for a library project
+# iplot
 
-## Initial set up
+Interactive seaborn plotting widgets for Jupyter. Call `iplot(dataframe)` and
+get dropdowns for `x`, `y`, `hue`, `row`, and `col` plus a plot-type picker —
+explore a dataset's relationships without writing new plotting code for every
+view.
 
-- In the link above, replace `libraryname` with your library's name.
-- Rename the `libraryname` folder to the name of your library, do *not* use hyphens, '-', in the name. 
-- Replace all instances of `libraryname`, `modulename`, and `functionname` for the names of/in your library (`Shift-Cmd-F` in VScode). 
+See [munch-group.org/iplot](https://munch-group.org/iplot) for the full docs
+and examples.
 
-![example event parameter](https://github.com/munch-group/libraryname/actions/workflows/quarto-publish.yml/badge.svg?event=push)
+## Installation
+
+```bash
+conda install -c munch-group iplot
+```
+
+## Quick start
+
+```python
+import seaborn as sns
+from iplot import iplot
+
+data = sns.load_dataset('penguins')
+iplot(data)
+```
 
 ## Development
 
-In addition to any dependencies of your library, the development setup requires [quarto](https://quarto.org) the following packages:
+Environment and tasks are managed with [pixi](https://pixi.sh):
 
-conda-forge::jupyter
-conda-forge::nbconvert
-conda-forge::quartodoc 
-conda-forge::gh
-conda-forge::git
-conda-forge::pip
-
-## Version
-
-The only version you need to change is the one in `setup.cfg`.
-
-## Unit tests
-
-Test are put in `test/test_modulename.py`. Run these and all other `test_*` files you create by running `./scripts/test.sh`.
-
-## Creating docs
-
-Use type hits (with the `typing` module) for code and add this to your `settings.json` in VScode.
-
-```
-"files.associations": {
-    "*.qmd": "quarto"
-},
-"autoDocstring.docstringFormat": "numpy",
-"autoDocstring.startOnNewLine": true,
-"autoDocstring.customTemplatePath": "docs/autodoc.mustache",
+```bash
+pixi install --locked   # set up the dev environment
+pixi run install-dev    # editable install of iplot into it
+pixi run test           # run the test suite
+pixi run docs           # execute the docs notebooks in place
+pixi run api            # build and render the quartodoc/Quarto site
 ```
 
-That lets you can autogenerate doc-strings by typing `"""` at the top of your functions.
+Releasing a new version:
 
-## Publishing docs
+```bash
+pixi run release        # bump the patch version, tag, and push
+```
 
-Docs are published to your github pages site `https://{user}.github.io/{libraryname}`. The template is set up for the user `munch-group`, but you can substitute all its instances for your own github user name.
+This triggers CI to build and publish the conda and PyPI packages and
+publish the docs site.
 
-Run all documentation notebooks inplace by running `./docs-run-notebooks.sh`. Build and render all documentation by running `./docs-build-render.sh`.
+## License
 
-## Publishing conda package
-
-Once pushed to github the library can be published as a conda package by running `./conda-release.sh`.
-
-Publishing the conda package to anaconda requires that you set up a github secret, `ANACONDA_TOKEN`, that you create on your anaconda.org account.
-
-## Library dependencies
-
-Dependencies are managed in `pyproject.toml` and automatically read by `conda-build/meta.yaml`.
-
-## Entry points
-
-Entry points are defined in `pyproject.toml` and automatically read by `conda-build/meta.yaml`.
+MIT — see [LICENSE](LICENSE).

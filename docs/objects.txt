@@ -2,4 +2,8 @@
 # Project: iplot
 # Version: 0.0.9999
 # The remainder of this file is compressed using zlib.
-iplot.seaborn py:function 1 api/seaborn.html#iplot.seaborn -
+iplot.iplot.iplot py:function 1 api/iplot.html#iplot.iplot.iplot -
+iplot.iplot.iplot_settings py:function 1 api/iplot.html#iplot.iplot.iplot_settings -
+iplot.iplot py:module 1 api/iplot.html#iplot.iplot -
+iplot.iplot_settings py:function 1 api/iplot_settings.html#iplot.iplot_settings -
+iplot.iplot.iplot_settings py:function 1 api/iplot_settings.html#iplot.iplot_settings iplot.iplot_settings
