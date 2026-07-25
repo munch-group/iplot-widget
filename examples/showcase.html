@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -74,10 +77,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-158031087360bce0ff56dc785ce39e06.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-6ac2aec46ad7f46b16024ee4409aa65c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -139,7 +145,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/munch-group/iplot/"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/munch-group/iplot-widget/"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -193,37 +199,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> iplot</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> iplot <span class="im">as</span> wp</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> iplot_widget</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> iplot_widget <span class="im">as</span> wp</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> importlib</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>importlib.<span class="bu">reload</span>(iplot)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>importlib.<span class="bu">reload</span>(iplot_widget)</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#wp.set_options(max_figure_width=4)</span></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#wp.set_options(x=None, y=None, col=None, graphics=[sns.scatterplot, sns.boxplot], theme={'style': 'darkgrid', 'palette': 'colorblind'})</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>config InlineBackend.figure_format <span class="op">=</span> <span class="st">'retina'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#wp.set_options(x=None, y=None, col=None, graphics=[sns.scatterplot, sns.boxplot], theme={'style': 'darkgrid', 'palette': 'colorblind'})</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>&lt;module 'iplot_widget' from '/Users/kmt/sandbox/widgets/iplot-widget/src/iplot_widget/__init__.py'&gt;</code></pre>
+</div>
 </div>
 <section id="dummy-data" class="level2">
 <h2 class="anchored" data-anchor-id="dummy-data">Dummy data</h2>
 <div id="530faa18-6fda-4473-8ac0-0bc8eee34a00" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> sns.load_dataset(<span class="st">'penguins'</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># l = [data]</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># data_copy = data.loc[data.species == 'Adelie', :]</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># data_copy['species'] = 'foo'</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># l.append(data_copy)</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># data_copy = data.loc[data.species == 'Adelie', :]</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># data_copy['species'] = 'bar'</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># l.append(data_copy)</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># # data_copy = data.loc[data.species == 'Adelie', :]</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># # data_copy['species'] = 'baz'</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># # l.append(data_copy)</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># data = pd.concat(l)</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>data.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> sns.load_dataset(<span class="st">'penguins'</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># l = [data]</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># data_copy = data.loc[data.species == 'Adelie', :]</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># data_copy['species'] = 'foo'</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># l.append(data_copy)</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># data_copy = data.loc[data.species == 'Adelie', :]</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># data_copy['species'] = 'bar'</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># l.append(data_copy)</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># # data_copy = data.loc[data.species == 'Adelie', :]</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># # data_copy['species'] = 'baz'</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># # l.append(data_copy)</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># data = pd.concat(l)</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>data.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 
@@ -301,192 +308,135 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<div id="018e99a1-6bd4-4a38-b4a3-69736ec5178a" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>wp.seaborn(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<style>.button-spacing-class {margin-left: 3em; margin-right: 2em;}</style>
+<div id="018e99a1-6bd4-4a38-b4a3-69736ec5178a" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#wp.seaborn(data)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell-output cell-output-display">
-<style> .widget-label { max-width: 3em !important; } </style>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"0fbe914be89c496aba792656667a6a6a","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"3e61584686e9475e805495eeafed1980","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"31b42daecf4a4fd689d9e6d1678e569b","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"989de871d5144ea5b5a993462f28cb8d","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"989de871d5144ea5b5a993462f28cb8d","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-</div>
-<div id="0af6953b-050c-4b70-afba-ef0a35b76dc9" class="cell" data-execution_count="35">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sns.set_style({<span class="st">'style'</span>: <span class="st">'darkgrid'</span>, <span class="st">'palette'</span>: <span class="st">'viridis'</span>})                             </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.relplot(data, x<span class="op">=</span><span class="st">'species'</span>, y<span class="op">=</span><span class="st">'island'</span>, col<span class="op">=</span><span class="st">'island'</span>, row<span class="op">=</span><span class="st">'species'</span>, height<span class="op">=</span><span class="dv">2</span>, kind<span class="op">=</span><span class="st">'scatter'</span>, </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                facet_kws<span class="op">=</span><span class="bu">dict</span>(margin_titles<span class="op">=</span><span class="va">True</span>))</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>g.set_titles(col_template<span class="op">=</span><span class="st">"</span><span class="sc">{col_name}</span><span class="st">"</span>, row_template<span class="op">=</span><span class="st">"</span><span class="sc">{row_name}</span><span class="st">"</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>g.tight_layout() <span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="0af6953b-050c-4b70-afba-ef0a35b76dc9" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>sns.set_style({<span class="st">'style'</span>: <span class="st">'darkgrid'</span>, <span class="st">'palette'</span>: <span class="st">'viridis'</span>})                             </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.relplot(data, x<span class="op">=</span><span class="st">'species'</span>, y<span class="op">=</span><span class="st">'island'</span>, col<span class="op">=</span><span class="st">'island'</span>, row<span class="op">=</span><span class="st">'species'</span>, height<span class="op">=</span><span class="dv">2</span>, kind<span class="op">=</span><span class="st">'scatter'</span>, </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                facet_kws<span class="op">=</span><span class="bu">dict</span>(margin_titles<span class="op">=</span><span class="va">True</span>))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>g.set_titles(col_template<span class="op">=</span><span class="st">"</span><span class="sc">{col_name}</span><span class="st">"</span>, row_template<span class="op">=</span><span class="st">"</span><span class="sc">{row_name}</span><span class="st">"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>g.tight_layout() <span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="showcase_files/figure-html/cell-5-output-1.png" width="590" height="589" class="figure-img"></p>
+<p><a href="showcase_files/figure-html/cell-5-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="showcase_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="32da1924-d662-43ff-b262-259f4ad0ed98" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_facet_size(min_sq_size, max_sq_size):</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    sq_size <span class="op">=</span> (min_sq_size <span class="op">+</span> max_sq_size) <span class="op">/</span> <span class="dv">2</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">abs</span>(sq_size <span class="op">-</span> min_sq_size) <span class="op">&lt;</span> <span class="fl">0.01</span> <span class="kw">or</span> <span class="bu">abs</span>(sq_size <span class="op">-</span> max_sq_size) <span class="op">&lt;</span> <span class="fl">0.01</span>:</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> sq_size</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    sq_per_row <span class="op">=</span> OPTIONS[<span class="st">'max_figure_width'</span>] <span class="op">//</span> sq_size</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    sq_per_col <span class="op">=</span> OPTIONS[<span class="st">'max_figure_height'</span>] <span class="op">//</span> sq_size</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    sq_fitted <span class="op">=</span> sq_per_row <span class="op">*</span> sq_per_col</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> sq_fitted <span class="op">&lt;</span> col_cats:</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> find_facet_size(min_sq_size, sq_size)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> find_facet_size(sq_size, max_sq_size)</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> sqrt</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>col_cats <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>OPTIONS <span class="op">=</span> {}</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>OPTIONS[<span class="st">'max_figure_width'</span>] <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>OPTIONS[<span class="st">'max_figure_height'</span>] <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>max_square_size <span class="op">=</span> sqrt(OPTIONS[<span class="st">'max_figure_height'</span>] <span class="op">*</span> OPTIONS[<span class="st">'max_figure_width'</span>] <span class="op">/</span> col_cats)</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>find_facet_size(<span class="dv">0</span>, max_square_size)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div id="32da1924-d662-43ff-b262-259f4ad0ed98" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_facet_size(min_sq_size, max_sq_size):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    sq_size <span class="op">=</span> (min_sq_size <span class="op">+</span> max_sq_size) <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">abs</span>(sq_size <span class="op">-</span> min_sq_size) <span class="op">&lt;</span> <span class="fl">0.01</span> <span class="kw">or</span> <span class="bu">abs</span>(sq_size <span class="op">-</span> max_sq_size) <span class="op">&lt;</span> <span class="fl">0.01</span>:</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> sq_size</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    sq_per_row <span class="op">=</span> OPTIONS[<span class="st">'max_figure_width'</span>] <span class="op">//</span> sq_size</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    sq_per_col <span class="op">=</span> OPTIONS[<span class="st">'max_figure_height'</span>] <span class="op">//</span> sq_size</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    sq_fitted <span class="op">=</span> sq_per_row <span class="op">*</span> sq_per_col</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> sq_fitted <span class="op">&lt;</span> col_cats:</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> find_facet_size(min_sq_size, sq_size)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> find_facet_size(sq_size, max_sq_size)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> sqrt</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>col_cats <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>OPTIONS <span class="op">=</span> {}</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>OPTIONS[<span class="st">'max_figure_width'</span>] <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>OPTIONS[<span class="st">'max_figure_height'</span>] <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>max_square_size <span class="op">=</span> sqrt(OPTIONS[<span class="st">'max_figure_height'</span>] <span class="op">*</span> OPTIONS[<span class="st">'max_figure_width'</span>] <span class="op">/</span> col_cats)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>find_facet_size(<span class="dv">0</span>, max_square_size)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>3.340938158288254</code></pre>
 </div>
 </div>
-<div id="0f089b05-4289-4207-8b9d-cf9ccb54c929" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>math.sqrt(<span class="dv">5</span> <span class="op">*</span> <span class="dv">10</span> <span class="op">/</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div id="0f089b05-4289-4207-8b9d-cf9ccb54c929" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>math.sqrt(<span class="dv">5</span> <span class="op">*</span> <span class="dv">10</span> <span class="op">/</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>4.08248290463863</code></pre>
 </div>
 </div>
-<div id="99cf8b43-68d1-4049-8190-ee7f1784c826" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>sns.set_style({<span class="st">'style'</span>: <span class="st">'darkgrid'</span>, <span class="st">'palette'</span>: <span class="st">'viridis'</span>})                             </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>sns.relplot(data, x<span class="op">=</span><span class="st">'bill_length_mm'</span>, y<span class="op">=</span><span class="st">'bill_depth_mm'</span>, hue<span class="op">=</span><span class="st">'flipper_length_mm'</span>, </span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>            row<span class="op">=</span><span class="st">'island'</span>, col<span class="op">=</span><span class="st">'species'</span>, </span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>            palette<span class="op">=</span><span class="st">'viridis'</span>, kind<span class="op">=</span><span class="st">'scatter'</span>, height<span class="op">=</span><span class="dv">2</span>) <span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="99cf8b43-68d1-4049-8190-ee7f1784c826" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>sns.set_style({<span class="st">'style'</span>: <span class="st">'darkgrid'</span>, <span class="st">'palette'</span>: <span class="st">'viridis'</span>})                             </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>sns.relplot(data, x<span class="op">=</span><span class="st">'bill_length_mm'</span>, y<span class="op">=</span><span class="st">'bill_depth_mm'</span>, hue<span class="op">=</span><span class="st">'flipper_length_mm'</span>, </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>            row<span class="op">=</span><span class="st">'island'</span>, col<span class="op">=</span><span class="st">'species'</span>, </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>            palette<span class="op">=</span><span class="st">'viridis'</span>, kind<span class="op">=</span><span class="st">'scatter'</span>, height<span class="op">=</span><span class="dv">2</span>) <span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="showcase_files/figure-html/cell-8-output-1.png" width="728" height="590" class="figure-img"></p>
+<p><a href="showcase_files/figure-html/cell-8-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="showcase_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="ec7573b9-9306-4689-a807-d39ca38e500f" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ipywidgets <span class="im">import</span> interact</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="at">@interact</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_more_than(col1<span class="op">=</span><span class="st">'bill_length_mm'</span>, min_col1<span class="op">=</span><span class="dv">55</span>, col2<span class="op">=</span><span class="st">'bill_depth_mm'</span>, min_col2<span class="op">=</span><span class="dv">15</span>):</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> pd.option_context(<span class="st">'display.max_rows'</span>, <span class="va">None</span>,):</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        display(data.loc[(data[col1] <span class="op">&gt;</span> min_col1) <span class="op">&amp;</span> (data[col2] <span class="op">&gt;</span> min_col2)])</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="ec7573b9-9306-4689-a807-d39ca38e500f" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ipywidgets <span class="im">import</span> interact</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="at">@interact</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_more_than(col1<span class="op">=</span><span class="st">'bill_length_mm'</span>, min_col1<span class="op">=</span><span class="dv">55</span>, col2<span class="op">=</span><span class="st">'bill_depth_mm'</span>, min_col2<span class="op">=</span><span class="dv">15</span>):</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> pd.option_context(<span class="st">'display.max_rows'</span>, <span class="va">None</span>,):</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        display(data.loc[(data[col1] <span class="op">&gt;</span> min_col1) <span class="op">&amp;</span> (data[col2] <span class="op">&gt;</span> min_col2)])</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"1ae72433ebff4a01b87c6d02e9870ce4","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"c3948116549c4f33ad75719c7fe67a86","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 </div>
-<div id="f5a6b170-6d62-4363-8924-6171ce283358" class="cell" data-execution_count="29">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.colors</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="at">@interact</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_more_than(col1<span class="op">=</span>[<span class="st">'bill_length_mm'</span>, <span class="st">'bill_depth_mm'</span>], min_col1<span class="op">=</span><span class="dv">55</span>, col2<span class="op">=</span><span class="st">'bill_depth_mm'</span>, min_col2<span class="op">=</span><span class="dv">15</span>):</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> data.loc[(data[col1] <span class="op">&gt;</span> min_col1) <span class="op">&amp;</span> (data[col2] <span class="op">&gt;</span> min_col2)]</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    norm <span class="op">=</span>  matplotlib.colors.Normalize(</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        vmin<span class="op">=</span><span class="dv">30</span>,<span class="co">#data['bill_length_mm'].min(), </span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        vmax<span class="op">=</span><span class="dv">60</span>,<span class="co">#data['bill_length_mm'].max()</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> sns.scatterplot(df, x<span class="op">=</span><span class="st">'flipper_length_mm'</span>, y<span class="op">=</span><span class="st">'body_mass_g'</span>, hue<span class="op">=</span><span class="st">'bill_length_mm'</span>, hue_norm<span class="op">=</span>norm,</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># vmin=10, #data['bill_length_mm'].min(), </span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># vmax=20, #data['bill_length_mm'].max()</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>                   )</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">'flipper_length_mm'</span>)</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">'body_mass_g'</span>)</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    a, b <span class="op">=</span> data[<span class="st">'flipper_length_mm'</span>].<span class="bu">min</span>(), data[<span class="st">'flipper_length_mm'</span>].<span class="bu">max</span>()</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    a <span class="op">-=</span> <span class="bu">abs</span>(a <span class="op">-</span> b)<span class="op">*</span><span class="fl">.01</span></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    b <span class="op">+=</span> <span class="bu">abs</span>(a <span class="op">-</span> b)<span class="op">*</span><span class="fl">.01</span></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    plt.xlim(a, b)</span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    a, b <span class="op">=</span> data.body_mass_g.<span class="bu">min</span>(), data.body_mass_g.<span class="bu">max</span>()</span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    a <span class="op">-=</span> a<span class="op">*</span><span class="fl">0.03</span></span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    b <span class="op">+=</span> b<span class="op">*</span><span class="fl">0.03</span></span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ax.collections[0].set_clim(df['bill_depth_mm'].min(), df['bill_depth_mm'].max()) </span></span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>    plt.ylim(a, b)    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f5a6b170-6d62-4363-8924-6171ce283358" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.colors</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="at">@interact</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_more_than(col1<span class="op">=</span>[<span class="st">'bill_length_mm'</span>, <span class="st">'bill_depth_mm'</span>], min_col1<span class="op">=</span><span class="dv">55</span>, col2<span class="op">=</span><span class="st">'bill_depth_mm'</span>, min_col2<span class="op">=</span><span class="dv">15</span>):</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> data.loc[(data[col1] <span class="op">&gt;</span> min_col1) <span class="op">&amp;</span> (data[col2] <span class="op">&gt;</span> min_col2)]</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    norm <span class="op">=</span>  matplotlib.colors.Normalize(</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        vmin<span class="op">=</span><span class="dv">30</span>,<span class="co">#data['bill_length_mm'].min(), </span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        vmax<span class="op">=</span><span class="dv">60</span>,<span class="co">#data['bill_length_mm'].max()</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> sns.scatterplot(df, x<span class="op">=</span><span class="st">'flipper_length_mm'</span>, y<span class="op">=</span><span class="st">'body_mass_g'</span>, hue<span class="op">=</span><span class="st">'bill_length_mm'</span>, hue_norm<span class="op">=</span>norm,</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># vmin=10, #data['bill_length_mm'].min(), </span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># vmax=20, #data['bill_length_mm'].max()</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>                   )</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">'flipper_length_mm'</span>)</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">'body_mass_g'</span>)</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    a, b <span class="op">=</span> data[<span class="st">'flipper_length_mm'</span>].<span class="bu">min</span>(), data[<span class="st">'flipper_length_mm'</span>].<span class="bu">max</span>()</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    a <span class="op">-=</span> <span class="bu">abs</span>(a <span class="op">-</span> b)<span class="op">*</span><span class="fl">.01</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    b <span class="op">+=</span> <span class="bu">abs</span>(a <span class="op">-</span> b)<span class="op">*</span><span class="fl">.01</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    plt.xlim(a, b)</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    a, b <span class="op">=</span> data.body_mass_g.<span class="bu">min</span>(), data.body_mass_g.<span class="bu">max</span>()</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>    a <span class="op">-=</span> a<span class="op">*</span><span class="fl">0.03</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>    b <span class="op">+=</span> b<span class="op">*</span><span class="fl">0.03</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ax.collections[0].set_clim(df['bill_depth_mm'].min(), df['bill_depth_mm'].max()) </span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    plt.ylim(a, b)    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"8ff63cd4a03d4f80a486f816e98caa6c","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"dfce5541978f41119f2ae5f0a243d6d1","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="showcase_files/figure-html/cell-10-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="showcase_files/figure-html/cell-10-output-2.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="f6787e23-9094-4900-9c49-633d5379bb73" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>sns.set_style({<span class="st">'style'</span>: <span class="st">'darkgrid'</span>, <span class="st">'palette'</span>: <span class="st">'viridis'</span>})                             </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data, x<span class="op">=</span><span class="st">'island'</span>, y<span class="op">=</span><span class="st">'bill_length_mm'</span>, hue<span class="op">=</span><span class="va">None</span>, gap<span class="op">=</span><span class="fl">0.1</span>, dodge<span class="op">=</span><span class="va">True</span>) <span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>sns.set_style({<span class="st">'style'</span>: <span class="st">'darkgrid'</span>, <span class="st">'palette'</span>: <span class="st">'viridis'</span>})                             </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data, x<span class="op">=</span><span class="st">'island'</span>, y<span class="op">=</span><span class="st">'bill_length_mm'</span>, hue<span class="op">=</span><span class="va">None</span>, gap<span class="op">=</span><span class="fl">0.1</span>, dodge<span class="op">=</span><span class="va">True</span>) <span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="showcase_files/figure-html/cell-11-output-1.png" width="563" height="432" class="figure-img"></p>
+<p><a href="showcase_files/figure-html/cell-11-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="showcase_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></a></p>
 </figure>
-</div>
-</div>
-</div>
-<div id="4ae9dc9b-f67e-4d1a-bff1-f35fa5c435d7" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="st">asdfa</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;details&gt;</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;summary&gt;Show code for plot&lt;/summary&gt;</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="st">```python</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="st">akljsdf alsdf asd</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/details&gt;</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>Markdown(s)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[13]</span><span class="ansi-green-fg">, line 16</span>
-<span class="ansi-green-fg">      1</span> s = <span class="ansi-yellow-fg">"""</span>
-<span class="ansi-green-fg">      2</span> <span class="ansi-yellow-fg">asdfa</span>
-<span class="ansi-green-fg">      3</span> 
-<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">     14</span> 
-<span class="ansi-green-fg">     15</span> <span class="ansi-yellow-fg">"""</span>
-<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">16</span> <span class="ansi-yellow-bg">Markdown</span>(s)
-
-<span class="ansi-red-fg">NameError</span>: name 'Markdown' is not defined</pre>
 </div>
 </div>
 </div>
@@ -714,7 +664,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="showcase_files/figure-html/cell-22-output-1.png" width="563" height="433" class="figure-img"></p>
+<p><a href="showcase_files/figure-html/cell-21-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="showcase_files/figure-html/cell-21-output-1.png" width="563" height="433" class="figure-img"></a></p>
 </figure>
 </div>
 </div>
@@ -914,7 +864,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="showcase_files/figure-html/cell-36-output-1.png" width="890" height="890" class="figure-img"></p>
+<p><a href="showcase_files/figure-html/cell-35-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="showcase_files/figure-html/cell-35-output-1.png" width="890" height="890" class="figure-img"></a></p>
 </figure>
 </div>
 </div>
@@ -1000,7 +950,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/munch-group\.github\.io\/iplot\/");
+        var filterRegex = new RegExp("https:\/\/munch-group\.github\.io\/iplot-widget\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -1328,6 +1278,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   });
   </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

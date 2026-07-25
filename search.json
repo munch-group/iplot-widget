@@ -1,5 +1,260 @@
 [
   {
+    "objectID": "pages/example.html",
+    "href": "pages/example.html",
+    "title": "Example",
+    "section": "",
+    "text": "import pandas as pd\nimport seaborn as sns\nfrom iplot_widget import iplot, iplot_settings"
+  },
+  {
+    "objectID": "pages/example.html#dummy-data",
+    "href": "pages/example.html#dummy-data",
+    "title": "Example",
+    "section": "Dummy data",
+    "text": "Dummy data\n\ndata = sns.load_dataset('penguins')\ndata.head()\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nMale\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nFemale\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nFemale\n\n\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n4\nAdelie\nTorgersen\n36.7\n19.3\n193.0\n3450.0\nFemale"
+  },
+  {
+    "objectID": "pages/example.html#show-the-widget",
+    "href": "pages/example.html#show-the-widget",
+    "title": "Example",
+    "section": "Show the widget",
+    "text": "Show the widget\nSelect from the dropdown menus as many data features (columns) you want represented in the plot. The Plot dropdown menu automatically update to only show the plots available to your selection. Click the “Show plot” to render the plot. To reveal the code required to make the plot yourself, click the “Show code for plot”.\n\niplot(data)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nimport seaborn as sns\nsns.set_style({'style': 'darkgrid', 'palette': 'viridis'})                             \ng = sns.displot(data, x='island', y='species', height=5, kind='hist')\ng.set_titles(col_template=\"{col_name}\", row_template=\"{row_name}\")\ng.tight_layout()\n\n\n\n\n\n\n\n\n\niplot(data, x='bill_length_mm', y='bill_depth_mm', hue='species', col='island', row='sex')"
+  },
+  {
+    "objectID": "pages/getting_started.html",
+    "href": "pages/getting_started.html",
+    "title": "Getting started",
+    "section": "",
+    "text": "iplot lets you explore the relationships between variables in a dataset using the standard visualization libraries - without writing new code for each plot.",
+    "crumbs": [
+      "Getting started"
+    ]
+  },
+  {
+    "objectID": "pages/getting_started.html#installation",
+    "href": "pages/getting_started.html#installation",
+    "title": "Getting started",
+    "section": "Installation",
+    "text": "Installation\nconda install -c munch-group iplot-widget",
+    "crumbs": [
+      "Getting started"
+    ]
+  },
+  {
+    "objectID": "pages/getting_started.html#seaborn",
+    "href": "pages/getting_started.html#seaborn",
+    "title": "Getting started",
+    "section": "Seaborn",
+    "text": "Seaborn\nThe iplot_widget.iplot function produces a widget with dropdown menus that lets you change all the specified dimensions of your visualization.\nYou can load an example data frame like this:\n\nimport seaborn as sns\ndata = sns.load_dataset('penguins')\n\n\nDisplay the widget:\n\nfrom iplot_widget import iplot\n\niplot(data)",
+    "crumbs": [
+      "Getting started"
+    ]
+  },
+  {
+    "objectID": "pages/getting_started.html#learning-more",
+    "href": "pages/getting_started.html#learning-more",
+    "title": "Getting started",
+    "section": "Learning more",
+    "text": "Learning more\n\nSeaborn scientific visualization.\nPandas data structures.\nJupyter notebooks.",
+    "crumbs": [
+      "Getting started"
+    ]
+  },
+  {
+    "objectID": "api/index.html",
+    "href": "api/index.html",
+    "title": "Function reference",
+    "section": "",
+    "text": "iplot\nThis function is a wrapper for seaborn plots. It creates a set of dropdowns\n\n\niplot_settings\nCalling iplot.seaborn with only thedata` positional argument will display dropdowns for all plot dimensions and include",
+    "crumbs": [
+      "Library reference",
+      "Function reference"
+    ]
+  },
+  {
+    "objectID": "api/index.html#some-section",
+    "href": "api/index.html#some-section",
+    "title": "Function reference",
+    "section": "",
+    "text": "iplot\nThis function is a wrapper for seaborn plots. It creates a set of dropdowns\n\n\niplot_settings\nCalling iplot.seaborn with only thedata` positional argument will display dropdowns for all plot dimensions and include",
+    "crumbs": [
+      "Library reference",
+      "Function reference"
+    ]
+  },
+  {
+    "objectID": "api/seaborn.html",
+    "href": "api/seaborn.html",
+    "title": "seaborn",
+    "section": "",
+    "text": "iplot.seaborn(\n    data\n    plot=None\n    graphics=None\n    wrap=3\n    theme={'context': 'notebook', 'style': 'darkgrid', 'palette': 'viridis'}\n    **kwargs\n)\nThis function is a wrapper for seaborn plots. It creates a set of dropdowns for the most common parameters in seaborn plots.\n\n\n\ndata : pandas.DataFrame\n\nThe data to be plotted. A pandas.DataFrame.\n\nplot : str = None\n\nThe seaborn plot to be used. Default is 'scatterplot'.\n\ngraphics : list = None\n\nA list of seaborn plotting functions to be used. Default is a list of common seaborn plotting functions.\n\nwrap : int = 3\n\nMax number of dropdowns in each row.\n\ntheme : dict = {'context': 'notebook', 'style': 'darkgrid', 'palette': 'viridis'}\n\nDictionary with keyword arguments for seaborn.set_theme().\n\n****kwargs** : int | str | float = {}\n\nExtra arguments passed to seaborn plotting function, such as x, y, hue, row, col, palette, style. See the seaborn documentation for all possible arguments. list of all possible arguments.\n\n\n\n\n\n\n : IPython.display.DisplayHandle\n\nThe display of two widgets objects: an HBox with the dropdowns and a seaborn plot.\n\n\n\n\n\nThis code will display a scatter plot of flipper_length_mm against body_mass_g with dropdown menus for x, y, and hue variables. Selecting form the dropdowns will update the plot.\nimport seaborn as sns\nimport iplot as pw\ndata = sns.load_dataset('penguins')\npw.seaborn(data, x='flipper_length_mm', y='body_mass_g', hue='species')"
+  },
+  {
+    "objectID": "api/seaborn.html#parameters",
+    "href": "api/seaborn.html#parameters",
+    "title": "seaborn",
+    "section": "",
+    "text": "data : pandas.DataFrame\n\nThe data to be plotted. A pandas.DataFrame.\n\nplot : str = None\n\nThe seaborn plot to be used. Default is 'scatterplot'.\n\ngraphics : list = None\n\nA list of seaborn plotting functions to be used. Default is a list of common seaborn plotting functions.\n\nwrap : int = 3\n\nMax number of dropdowns in each row.\n\ntheme : dict = {'context': 'notebook', 'style': 'darkgrid', 'palette': 'viridis'}\n\nDictionary with keyword arguments for seaborn.set_theme().\n\n****kwargs** : int | str | float = {}\n\nExtra arguments passed to seaborn plotting function, such as x, y, hue, row, col, palette, style. See the seaborn documentation for all possible arguments. list of all possible arguments."
+  },
+  {
+    "objectID": "api/seaborn.html#returns",
+    "href": "api/seaborn.html#returns",
+    "title": "seaborn",
+    "section": "",
+    "text": ": IPython.display.DisplayHandle\n\nThe display of two widgets objects: an HBox with the dropdowns and a seaborn plot."
+  },
+  {
+    "objectID": "api/seaborn.html#examples",
+    "href": "api/seaborn.html#examples",
+    "title": "seaborn",
+    "section": "",
+    "text": "This code will display a scatter plot of flipper_length_mm against body_mass_g with dropdown menus for x, y, and hue variables. Selecting form the dropdowns will update the plot.\nimport seaborn as sns\nimport iplot as pw\ndata = sns.load_dataset('penguins')\npw.seaborn(data, x='flipper_length_mm', y='body_mass_g', hue='species')"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "iplot",
+    "section": "",
+    "text": "iplot"
+  },
+  {
+    "objectID": "examples/widgets.html",
+    "href": "examples/widgets.html",
+    "title": "Dummy data",
+    "section": "",
+    "text": "import sys\nimport pandas as pd\nimport numpy as np\nimport seaborn as sns\n\nfrom widgetplots import menu_plot\n%config InlineBackend.figure_format = 'retina'\n\n\n---------------------------------------------------------------------------\nModuleNotFoundError                       Traceback (most recent call last)\nCell In[1], line 6\n      3 import numpy as np\n      4 import seaborn as sns\n----&gt; 6 from widgetplots import menu_plot\n      7 get_ipython().run_line_magic('config', \"InlineBackend.figure_format = 'retina'\")\n\nModuleNotFoundError: No module named 'widgetplots'\nimport sys\nimport pandas as pd\nimport numpy as np\nimport ipywidgets \nimport seaborn as sns\nimport matplotlib.pyplot as plt \n%config InlineBackend.figure_format = 'retina'\ncov = np.array([[6, 3], [3, 3.5]])\nmultinorm = np.random.multivariate_normal([5, 10], cov, size=100)\ndf = pd.DataFrame({'math score': multinorm[:, 0],\n                       'reading score': multinorm[:, 1], \n                       'writing score': np.random.normal(2, 2, 100),\n                   'gender': np.random.choice(['male', 'female'], size=100),\n                   'race/ethnicity': np.random.choice(['group A', 'group B', 'group C', 'group D', 'group E'], size=100),\n                    'lunch': np.random.choice(['free', 'standard'], size=100),\n                    'parental education': np.random.choice(['highschool', 'bachelor', 'master'], size=100),\n                    'preparation course': np.random.choice(['completed', 'none'], size=100)\n                  })\ndf.head()\n\n\n\n\n\n\n\n\nmath score\nreading score\nwriting score\ngender\nrace/ethnicity\nlunch\nparental education\npreparation course\n\n\n\n\n0\n3.648794\n7.544339\n2.589042\nmale\ngroup B\nfree\nhighschool\nnone\n\n\n1\n6.580344\n10.534794\n3.087276\nmale\ngroup C\nfree\nmaster\nnone\n\n\n2\n5.479877\n10.443991\n4.772000\nfemale\ngroup B\nfree\nbachelor\nnone\n\n\n3\n5.645676\n12.214279\n1.251577\nfemale\ngroup D\nfree\nmaster\ncompleted\n\n\n4\n3.768076\n9.548172\n-2.040344\nmale\ngroup C\nfree\nbachelor\ncompleted\ndef scatter(x,y,hue):\n    plt.close('all')\n    fig = plt.figure(figsize=(8,4))\n    sns.scatterplot(data=df,x=x,y=y,hue=hue)\n    plt.title('Scatterplot of ' +x+' versus '+ y)\n    plt.show()\n    \ndrop_down_x = ipywidgets.Dropdown(options=list(df.drop(['math score','reading score', 'writing score'],axis=1).columns),\n                                value=list(df.drop(['math score','reading score', 'writing score'],axis=1).columns)[0],\n                                description='X variable:',\n                                disabled=False)\n\ndrop_down_y = ipywidgets.Dropdown(options=list(['math score','reading score', 'writing score']),\n                                value=list(['math score','reading score', 'writing score'])[0],\n                                description='Y variable:',\n                                disabled=False)\n\ndrop_down_hue= ipywidgets.Dropdown(options=list(df.drop(['math score','reading score', 'writing score'],axis=1).columns),\n                                value=list(df.drop(['math score','reading score', 'writing score'],axis=1).columns)[0],\n                                description='Hue:',\n                                disabled=False)\n\nin3 = ipywidgets.HBox([drop_down_x,drop_down_y,drop_down_hue])\nout3 = ipywidgets.interactive_output(scatter,\n                                     {'x' : drop_down_x,\n                                     'y': drop_down_y,\n                                     'hue':drop_down_hue})\ndisplay(in3, out3)\ndef boxplot(selected_x, selected_y):\n    plt.close('all')\n    fig = plt.figure(figsize=(8,4))\n    sns.boxplot(x=df[selected_x],y=df[selected_y])\n    plt.title(f'Boxplot of {selected_y} for {selected_x}')\n    plt.show()\n    \ndrop_down_x = ipywidgets.Dropdown(options=list(df.drop(['math score','reading score', 'writing score'],axis=1).columns),\n                                value=list(df.drop(['math score','reading score', 'writing score'],axis=1).columns)[0],\n                                description='X variable:',\n                                disabled=False)\n\ndrop_down_y = ipywidgets.Dropdown(options=list(['math score','reading score', 'writing score']),\n                                value=list(['math score','reading score', 'writing score'])[0],\n                                description='Y variable:',\n                                disabled=False)\n\nin1 = ipywidgets.HBox([drop_down_x, drop_down_y])\nout1 = ipywidgets.interactive_output(boxplot,\n                                     {'selected_x' : drop_down_x, 'selected_y' : drop_down_y})\ndisplay(in1, out1)"
+  },
+  {
+    "objectID": "examples/widgets.html#generic-plot-with-menus",
+    "href": "examples/widgets.html#generic-plot-with-menus",
+    "title": "Dummy data",
+    "section": "Generic plot with menus",
+    "text": "Generic plot with menus\n\ngraphics = [\n    sns.boxplot, \n    sns.scatterplot, \n    sns.violinplot,\n    sns.boxenplot, \n    sns.swarmplot,\n    sns.stripplot,\n    sns.kdeplot,\n    sns.barplot,\n]\n\ndef interactive_plot(df, defaults, graphics=graphics, strings_as_cats=False, palette=\"colorblind\"):\n    def plot(selected_x, selected_y, selected_hue=None, selected_plot=graphics[0]):\n        plt.close('all')\n        fig, ax = plt.subplots(1, 1, figsize=(8,4))\n        sns.set_style('ticks')\n        kwargs = dict(x=df[selected_x], y=df[selected_y])\n        if selected_hue in df:\n            kwargs['hue'] = df[selected_hue]\n            kwargs['palette'] = palette\n        try:\n            selected_plot(**kwargs, ax=ax)\n        except TypeError as e:\n            print(f\"{str(e).split(',')[0]}. That does not compatible with {selected_plot.__name__}\", file=sys.stderr)\n            plt.close('all')            \n            return\n        plt.title(f'{selected_plot.__name__.capitalize()} of {selected_y} for {selected_x}')\n        handles, labels = ax.get_legend_handles_labels()\n        if labels:\n            ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))\n        sns.despine()\n        plt.show()\n    \n    categorical_col_names = df.columns[(df.map(type) == str).all(0)].to_list()\n\n    dropdowns = {}\n    if 'plot' in defaults:\n        plot_options = [(g.__name__, g) for g in graphics]\n        names, funs = zip(*plot_options)\n        i = names.index(defaults['plot'])\n        options = plot_options[i:i+1] + plot_options[:i] + plot_options[i+1:] \n        drop_down_plot = ipywidgets.Dropdown(options=options, description='Plot:', disabled=False)\n        dropdowns['selected_plot'] = drop_down_plot\n    if 'x' in defaults:\n        x_options = df.columns.to_list()\n        drop_down_x = ipywidgets.Dropdown(options=x_options, value=defaults['x'], description='X variable:', disabled=False)\n        dropdowns['selected_x'] = drop_down_x\n    if 'y' in defaults:\n        if strings_as_cats:\n            y_options = df.drop(categorical_col_names,axis=1).columns\n        else:\n            y_options = df.columns.to_list()\n        drop_down_y = ipywidgets.Dropdown(options=y_options, value=defaults['y'], description='Y variable:', disabled=False)\n        dropdowns['selected_y'] = drop_down_y\n    if 'hue' in defaults:\n        if strings_as_cats:\n            hue_options = df.columns[(df.map(type) == str).all(0)]\n        else:\n            hue_options = df.columns.to_list()\n        drop_down_hue= ipywidgets.Dropdown(options=hue_options, value=defaults['hue'], description='Hue:', disabled=False)\n        dropdowns['selected_hue'] = drop_down_hue\n\n    display(ipywidgets.HBox(list(dropdowns.values())),\n            ipywidgets.interactive_output(plot, dropdowns))"
+  },
+  {
+    "objectID": "examples/widgets.html#examples",
+    "href": "examples/widgets.html#examples",
+    "title": "Dummy data",
+    "section": "Examples",
+    "text": "Examples\n\ndefaults = {'x':'gender', 'y':'math score', 'hue':'race/ethnicity', 'plot':'boxplot'}\nmenu_plot(df, defaults, strings_as_cats=True, palette=\"tab10\")\n\n\n\n\n\n\n\n\ndefaults = {'x':'reading score', 'y':'math score', 'hue':'parental education', 'plot':'scatterplot'}\nmenu_plot(df, defaults)\n\n\n\n\n\n\n\n\ndefaults = {'x':'gender', 'y':'math score', 'plot':'swarmplot'}\nmenu_plot(df, defaults)\n\n\n\n\n\n\n\n\ndefaults = {'x':'reading score', 'y':'writing score'}\nmenu_plot(df, defaults, graphics=[sns.scatterplot])\n\n\n\n\n\n\n\n\ndefaults = {'x':'reading score', 'y':'math score', 'hue':'gender'}\nmenu_plot(df, defaults, graphics=[sns.kdeplot])"
+  },
+  {
+    "objectID": "examples/showcase.html",
+    "href": "examples/showcase.html",
+    "title": "Showcase",
+    "section": "",
+    "text": "import sys\nimport pandas as pd\nimport numpy as np\n\nimport seaborn as sns\n\nimport iplot_widget\nimport iplot_widget as wp\n\n\nimport importlib\nimportlib.reload(iplot_widget)\n\n#wp.set_options(max_figure_width=4)\n\n#wp.set_options(x=None, y=None, col=None, graphics=[sns.scatterplot, sns.boxplot], theme={'style': 'darkgrid', 'palette': 'colorblind'})\n\n&lt;module 'iplot_widget' from '/Users/kmt/sandbox/widgets/iplot-widget/src/iplot_widget/__init__.py'&gt;"
+  },
+  {
+    "objectID": "examples/showcase.html#dummy-data",
+    "href": "examples/showcase.html#dummy-data",
+    "title": "Showcase",
+    "section": "Dummy data",
+    "text": "Dummy data\n\ndata = sns.load_dataset('penguins')\n\n# l = [data]\n# data_copy = data.loc[data.species == 'Adelie', :]\n# data_copy['species'] = 'foo'\n# l.append(data_copy)\n# data_copy = data.loc[data.species == 'Adelie', :]\n# data_copy['species'] = 'bar'\n# l.append(data_copy)\n# # data_copy = data.loc[data.species == 'Adelie', :]\n# # data_copy['species'] = 'baz'\n# # l.append(data_copy)\n# data = pd.concat(l)\n\ndata.head()\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nMale\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nFemale\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nFemale\n\n\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n4\nAdelie\nTorgersen\n36.7\n19.3\n193.0\n3450.0\nFemale"
+  },
+  {
+    "objectID": "examples/showcase.html#examples",
+    "href": "examples/showcase.html#examples",
+    "title": "Showcase",
+    "section": "Examples",
+    "text": "Examples\n\n#wp.seaborn(data)\n\n\nimport seaborn as sns\nsns.set_style({'style': 'darkgrid', 'palette': 'viridis'})                             \ng = sns.relplot(data, x='species', y='island', col='island', row='species', height=2, kind='scatter', \n                facet_kws=dict(margin_titles=True))\ng.set_titles(col_template=\"{col_name}\", row_template=\"{row_name}\")\ng.tight_layout() ;\n\n\n\n\n\n\n\n\n\ndef find_facet_size(min_sq_size, max_sq_size):\n\n    sq_size = (min_sq_size + max_sq_size) / 2\n    if abs(sq_size - min_sq_size) &lt; 0.01 or abs(sq_size - max_sq_size) &lt; 0.01:\n        return sq_size\n    sq_per_row = OPTIONS['max_figure_width'] // sq_size\n    sq_per_col = OPTIONS['max_figure_height'] // sq_size\n    sq_fitted = sq_per_row * sq_per_col\n    if sq_fitted &lt; col_cats:\n        return find_facet_size(min_sq_size, sq_size)\n    else:\n        return find_facet_size(sq_size, max_sq_size)\n\nfrom math import sqrt\ncol_cats = 3\nOPTIONS = {}\nOPTIONS['max_figure_width'] = 10\nOPTIONS['max_figure_height'] = 5\n\nmax_square_size = sqrt(OPTIONS['max_figure_height'] * OPTIONS['max_figure_width'] / col_cats)\n\nfind_facet_size(0, max_square_size)\n\n3.340938158288254\n\n\n\nimport math\nmath.sqrt(5 * 10 / 3)\n\n4.08248290463863\n\n\n\nimport seaborn as sns\nsns.set_style({'style': 'darkgrid', 'palette': 'viridis'})                             \nsns.relplot(data, x='bill_length_mm', y='bill_depth_mm', hue='flipper_length_mm', \n            row='island', col='species', \n            palette='viridis', kind='scatter', height=2) ;\n\n\n\n\n\n\n\n\n\nfrom ipywidgets import interact\nimport matplotlib.pyplot as plt\n\n@interact\ndef show_more_than(col1='bill_length_mm', min_col1=55, col2='bill_depth_mm', min_col2=15):\n    with pd.option_context('display.max_rows', None,):\n        display(data.loc[(data[col1] &gt; min_col1) & (data[col2] &gt; min_col2)])\n    \n\n\n\n\n\nimport matplotlib.colors\n@interact\ndef show_more_than(col1=['bill_length_mm', 'bill_depth_mm'], min_col1=55, col2='bill_depth_mm', min_col2=15):\n    df = data.loc[(data[col1] &gt; min_col1) & (data[col2] &gt; min_col2)]\n    norm =  matplotlib.colors.Normalize(\n        vmin=30,#data['bill_length_mm'].min(), \n        vmax=60,#data['bill_length_mm'].max()\n    )\n    ax = sns.scatterplot(df, x='flipper_length_mm', y='body_mass_g', hue='bill_length_mm', hue_norm=norm,\n                    # vmin=10, #data['bill_length_mm'].min(), \n                    # vmax=20, #data['bill_length_mm'].max()\n                   )\n    plt.xlabel('flipper_length_mm')\n    plt.ylabel('body_mass_g')\n    a, b = data['flipper_length_mm'].min(), data['flipper_length_mm'].max()\n    a -= abs(a - b)*.01\n    b += abs(a - b)*.01\n    plt.xlim(a, b)\n    a, b = data.body_mass_g.min(), data.body_mass_g.max()\n    a -= a*0.03\n    b += b*0.03\n    # ax.collections[0].set_clim(df['bill_depth_mm'].min(), df['bill_depth_mm'].max()) \n\n    \n    plt.ylim(a, b)    \n\n\n\n\n\n\n\n\n\n\n\n\nimport seaborn as sns\nsns.set_style({'style': 'darkgrid', 'palette': 'viridis'})                             \nsns.boxplot(data, x='island', y='bill_length_mm', hue=None, gap=0.1, dodge=True) ;\n\n\n\n\n\n\n\n\n\nwp.seaborn(data, x='species', y='body_mass_g', hue='island', plot='boxplot',\n           col='island', row='sex',\n          )\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[14], line 1\n----&gt; 1 wp.seaborn(data, x='species', y='body_mass_g', hue='island', plot='boxplot',\n      2            col='island', row='sex',\n      3           )\n\nTypeError: seaborn() got an unexpected keyword argument 'plot'\n\n\n\n\nfrom ipywidgets import interact, interact_manual\n@interact(plot=[('scatter', sns.scatterplot), ('boxplot', sns.boxplot)], \n                 x=['a', 'b', 'c'],\n                )\ndef h(**kwargs):\n    print(kwargs)\n\n\n\n\n\nimport matplotlib.pyplot as plt\n\n\n#%matplotlib inline\nimport ipywidgets as widgets\n\nslider = widgets.IntSlider(value=5, min=1, max=10, step=1)\n#Create your button.\nbutton = widgets.Button(description=\"Plot\")\n#Output field.\noutput = widgets.Output()\n\n#function to handle input.\ndef showOutput(btn):\n    output.clear_output()\n    return_value = slider.value\n    fig = plt.plot(return_value, return_value)\n    with output:\n        plt.show()\n        # print(return_value)\n\nbutton.on_click(showOutput)\n\nui = widgets.HBox([slider, button]), widgets.HBox([output])\ndisplay(*ui)\n\n\n\n\n\n\n\n\nimport ipywidgets as widgets\nslider = widgets.IntSlider(value=5, min=1, max=10, step=1)\n#Create your button.\nbutton = widgets.Button(description=\"Go\")\n#Output field.\noutput = widgets.Output()\n\n#function to handle input.\ndef showOutput(btn):\n    output.clear_output()\n    return_value = slider.value\n    with output:\n        print(return_value)\n\nbutton.on_click(showOutput)\n\nui = widgets.HBox([slider, button, output])\nui\n\n\n\n\n\nfrom ipywidgets import interactive\nfrom IPython.display import display\n\nmy_widget = interactive(h, plot=[('scatter', sns.scatterplot), ('boxplot', sns.boxplot)], __manual=True)\ndisplay(my_widget)\n\n\n\n\n\nwp.seaborn(data, x='bill_length_mm', y='body_mass_g', hue='body_mass_g', #plot='boxplot',\n           col='species'\n          )\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n# import matplotlib as mpl\n# import matplotlib.pyplot as plt\n\n# cmap= sns.color_palette('ch:', as_cmap= True)\n# sm = plt.cm.ScalarMappable(cmap= cmap, norm=mpl.colors.Normalize())\n\nwp.seaborn(data, #plot='scatterplot', \n           x='bill_length_mm', y='body_mass_g', hue='body_mass_g', col='species')\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nwp.seaborn(data, x='bill_length_mm', y='bill_depth_mm', hue='sex', #plot='scatterplot', \n          # palette='colorblind'\n          )\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsns.scatterplot(data, x='bill_length_mm', y='bill_depth_mm', hue='sex', \n              #  palette='colorblind'\n               )\n\n\n\n\n\n\n\n\n\nwp.seaborn(data=data, x='bill_length_mm', y='bill_depth_mm', hue='body_mass_g', \n           # style='sex', \n           # size='body_mass_g', \n           col='species', row='island',\n          wrap=3, theme={'palette': 'Set1'})\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[24], line 1\n----&gt; 1 wp.seaborn(data=data, x='bill_length_mm', y='bill_depth_mm', hue='body_mass_g', \n      2            # style='sex', \n      3            # size='body_mass_g', \n      4            col='species', row='island',\n      5           wrap=3, theme={'palette': 'Set1'})\n\nTypeError: seaborn() got an unexpected keyword argument 'wrap'\n\n\n\n\nwp.seaborn(data, plot='boxplot', x='species', y='bill_depth_mm')\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[25], line 1\n----&gt; 1 wp.seaborn(data, plot='boxplot', x='species', y='bill_depth_mm')\n\nTypeError: seaborn() got an unexpected keyword argument 'plot'\n\n\n\n\nwp.seaborn(data, plot='histplot', x='bill_depth_mm', hue='sex', row='species', col='island')\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[26], line 1\n----&gt; 1 wp.seaborn(data, plot='histplot', x='bill_depth_mm', hue='sex', row='species', col='island')\n\nTypeError: seaborn() got an unexpected keyword argument 'plot'\n\n\n\n\nwp.seaborn(data, x='bill_length_mm', y='bill_depth_mm', row='species', col='island')\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nwp.seaborn(data=data, x='bill_length_mm', y='bill_depth_mm')\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nwp.seaborn(data=data, x='bill_length_mm', y='bill_depth_mm', graphics=[sns.lmplot])\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[30], line 1\n----&gt; 1 wp.seaborn(data=data, x='bill_length_mm', y='bill_depth_mm', graphics=[sns.lmplot])\n\nTypeError: seaborn() got an unexpected keyword argument 'graphics'\n\n\n\n\nwp.seaborn(data, x='bill_length_mm', y='bill_depth_mm', hue='species', graphics=[sns.lmplot])\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[31], line 1\n----&gt; 1 wp.seaborn(data, x='bill_length_mm', y='bill_depth_mm', hue='species', graphics=[sns.lmplot])\n\nTypeError: seaborn() got an unexpected keyword argument 'graphics'\n\n\n\n\nwp.seaborn(data, x='bill_length_mm', y='bill_depth_mm', graphics=[sns.scatterplot])\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[32], line 1\n----&gt; 1 wp.seaborn(data, x='bill_length_mm', y='bill_depth_mm', graphics=[sns.scatterplot])\n\nTypeError: seaborn() got an unexpected keyword argument 'graphics'\n\n\n\n\nwp.seaborn(data, x='bill_length_mm', y='bill_depth_mm', hue='species', graphics=[sns.kdeplot])\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[33], line 1\n----&gt; 1 wp.seaborn(data, x='bill_length_mm', y='bill_depth_mm', hue='species', graphics=[sns.kdeplot])\n\nTypeError: seaborn() got an unexpected keyword argument 'graphics'\n\n\n\n\n\n\n\n\n\n\n\n\n\nwp.seaborn(data, x='bill_length_mm', y='bill_depth_mm', hue='sex', plot='scatterplot', palette='colorblind')\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[34], line 1\n----&gt; 1 wp.seaborn(data, x='bill_length_mm', y='bill_depth_mm', hue='sex', plot='scatterplot', palette='colorblind')\n\nTypeError: seaborn() got an unexpected keyword argument 'plot'\n\n\n\n\ng = sns.FacetGrid(data, row='species', col='island', hue='sex')\ng.map_dataframe(sns.regplot, x='bill_depth_mm', y='bill_length_mm')"
+  },
+  {
+    "objectID": "api/iplot.html",
+    "href": "api/iplot.html",
+    "title": "iplot",
+    "section": "",
+    "text": "iplot_widget.iplot(data, x=None, y=None, hue=None, row=None, col=None)\nThis function is a wrapper for seaborn plots. It creates a set of dropdowns for the most common parameters in seaborn plots.\n\n\n\ndata : pandas.DataFrame\n\nThe data to be plotted. A pandas.DataFrame.\n\n****kwargs** : \n\nExtra arguments passed to seaborn plotting functions. See the seaborn documentation for all possible arguments. list of all possible arguments.\n\n\n\n\n\n\n : IPython.display.DisplayHandle\n\nThe display of two widgets objects: an HBox with the dropdowns and a seaborn plot.\n\n\n\n\n\nImport iplot and seaborn to load the penguins example dataset:\nimport seaborn as sns\ndata = sns.load_dataset('penguins')\nShow the plot widget with dropdowns for plot dimensions and for the plot graphic. Setting plot dimensions updates the available graphics in the “Plot” dropdown. dropdown menus for x, y, and hue variables. Selecting form the dropdowns will update the plot.\npw.seaborn(data)",
+    "crumbs": [
+      "Some section",
+      "iplot"
+    ]
+  },
+  {
+    "objectID": "api/iplot.html#parameters",
+    "href": "api/iplot.html#parameters",
+    "title": "iplot",
+    "section": "",
+    "text": "data : pandas.DataFrame\n\nThe data to be plotted. A pandas.DataFrame.\n\n****kwargs** : \n\nExtra arguments passed to seaborn plotting functions. See the seaborn documentation for all possible arguments. list of all possible arguments.",
+    "crumbs": [
+      "Some section",
+      "iplot"
+    ]
+  },
+  {
+    "objectID": "api/iplot.html#returns",
+    "href": "api/iplot.html#returns",
+    "title": "iplot",
+    "section": "",
+    "text": ": IPython.display.DisplayHandle\n\nThe display of two widgets objects: an HBox with the dropdowns and a seaborn plot.",
+    "crumbs": [
+      "Some section",
+      "iplot"
+    ]
+  },
+  {
+    "objectID": "api/iplot.html#examples",
+    "href": "api/iplot.html#examples",
+    "title": "iplot",
+    "section": "",
+    "text": "Import iplot and seaborn to load the penguins example dataset:\nimport seaborn as sns\ndata = sns.load_dataset('penguins')\nShow the plot widget with dropdowns for plot dimensions and for the plot graphic. Setting plot dimensions updates the available graphics in the “Plot” dropdown. dropdown menus for x, y, and hue variables. Selecting form the dropdowns will update the plot.\npw.seaborn(data)",
+    "crumbs": [
+      "Some section",
+      "iplot"
+    ]
+  },
+  {
+    "objectID": "api/iplot_settings.html",
+    "href": "api/iplot_settings.html",
+    "title": "iplot_settings",
+    "section": "",
+    "text": "iplot_widget.iplot_settings(**kwargs)\nCalling iplot.seaborn with only thedata` positional argument will display dropdowns for all plot dimensions and include all axis level seaborn graphics in the plot drowpdown. This function allows you limit the available plot dimensions and/or set their default values. It is also possible to set the plot theme by providing a dictionary with keyword arguments for seaborn.set_theme().\n\n\n\ngraphics : list\n\nA list of seaborn plotting functions to be used. Default is a list of common seaborn plotting functions.\n\ntheme : dict\n\nDictionary with keyword arguments for seaborn.set_theme().\n\nx : str\n\nDefault value for x-axis dropdown.\n\ny : str\n\nDefault value for y-axis dropdown.\n\nhue : str\n\nDefault value for hue dropdown.\n\ncol : str\n\nDefault value for col dropdown.\n\nrow : str\n\nDefault value for row dropdown.\n\n\n\n\n\n\n : None\n\nNone\n\n\n\n\n\nLimit the plot dimensions to ‘x’, ‘y’ and set the available graphics to ‘scatterplot’ and ‘lineplot’.\nimport iplot_widget as pw\npw.set_options(x=None, y=None, graphics=[sns.scatterplot, sns.lineplot])\nDo the same but set the default values for ‘x’ and ‘y’ to ‘flipper_length_mm’ and ‘body_mass_g’ respectively.\nimport iplot_widget as pw\npw.set_options(x='flipper_length_mm', y='body_mass_g', graphics=[sns.scatterplot, sns.lineplot])\nSet the color palette to ‘colorblind’:\nimport iplot_widget as pw\npw.set_options(theme={'palette': 'colorblind'})",
+    "crumbs": [
+      "Some section",
+      "iplot_settings"
+    ]
+  },
+  {
+    "objectID": "api/iplot_settings.html#parameters",
+    "href": "api/iplot_settings.html#parameters",
+    "title": "iplot_settings",
+    "section": "",
+    "text": "graphics : list\n\nA list of seaborn plotting functions to be used. Default is a list of common seaborn plotting functions.\n\ntheme : dict\n\nDictionary with keyword arguments for seaborn.set_theme().\n\nx : str\n\nDefault value for x-axis dropdown.\n\ny : str\n\nDefault value for y-axis dropdown.\n\nhue : str\n\nDefault value for hue dropdown.\n\ncol : str\n\nDefault value for col dropdown.\n\nrow : str\n\nDefault value for row dropdown.",
+    "crumbs": [
+      "Some section",
+      "iplot_settings"
+    ]
+  },
+  {
+    "objectID": "api/iplot_settings.html#returns",
+    "href": "api/iplot_settings.html#returns",
+    "title": "iplot_settings",
+    "section": "",
+    "text": ": None\n\nNone",
+    "crumbs": [
+      "Some section",
+      "iplot_settings"
+    ]
+  },
+  {
+    "objectID": "api/iplot_settings.html#examples",
+    "href": "api/iplot_settings.html#examples",
+    "title": "iplot_settings",
+    "section": "",
+    "text": "Limit the plot dimensions to ‘x’, ‘y’ and set the available graphics to ‘scatterplot’ and ‘lineplot’.\nimport iplot_widget as pw\npw.set_options(x=None, y=None, graphics=[sns.scatterplot, sns.lineplot])\nDo the same but set the default values for ‘x’ and ‘y’ to ‘flipper_length_mm’ and ‘body_mass_g’ respectively.\nimport iplot_widget as pw\npw.set_options(x='flipper_length_mm', y='body_mass_g', graphics=[sns.scatterplot, sns.lineplot])\nSet the color palette to ‘colorblind’:\nimport iplot_widget as pw\npw.set_options(theme={'palette': 'colorblind'})",
+    "crumbs": [
+      "Some section",
+      "iplot_settings"
+    ]
+  },
+  {
+    "objectID": "pages/tutorial/test_iplot.html",
+    "href": "pages/tutorial/test_iplot.html",
+    "title": "Smoke tests for iplot",
+    "section": "",
+    "text": "Converted to a pytest module by pixi run test (via jupyter nbconvert --to script). Each test_* function below is picked up by pytest; keep assertions inside functions named test_* so they survive the conversion as real, individually reported tests.\n\nimport matplotlibmatplotlib.use(\"Agg\")  # headless: no display available under nbconvert/pytestimport pandas as pdimport ipywidgets as widgetsfrom iplot_widget import iplot, iplot_settingsimport iplot_widget.iplot_widget as _impl\n\n\ndata = pd.DataFrame({\n    \"x\": [1, 2, 3, 4, 5, 6],\n    \"y\": [2, 4, 1, 3, 5, 2],\n    \"species\": [\"a\", \"a\", \"b\", \"b\", \"c\", \"c\"],\n})\n\n\ndef test_iplot_returns_output_widget():\n    result = iplot(data, x=\"x\", y=\"y\", hue=\"species\")\n    assert isinstance(result, widgets.Output)\n\n\ndef test_iplot_settings_updates_options():\n    original = _impl.OPTIONS[\"max_figure_width\"]\n    try:\n        iplot_settings(max_figure_width=12)\n        assert _impl.OPTIONS[\"max_figure_width\"] == 12\n    finally:\n        iplot_settings(max_figure_width=original)\n\n\ndef test_ax2fig_covers_common_plot_kinds():\n    for kind in [\"scatter\", \"line\", \"hist\", \"box\", \"bar\"]:\n        assert kind in _impl.AX2FIG"
+  },
+  {
     "objectID": "pages/seaborn.html#style-and-size",
     "href": "pages/seaborn.html#style-and-size",
     "title": "Seaborn",
@@ -40,181 +295,5 @@
     "title": "Seaborn",
     "section": "Kinds",
     "text": "Kinds"
-  },
-  {
-    "objectID": "pages/getting_started.html",
-    "href": "pages/getting_started.html",
-    "title": "Getting started",
-    "section": "",
-    "text": "iplot lets you explore the relationships between variables in a dataset using the standard visualization libraries - without writing new code for each plot.",
-    "crumbs": [
-      "Getting started"
-    ]
-  },
-  {
-    "objectID": "pages/getting_started.html#installation",
-    "href": "pages/getting_started.html#installation",
-    "title": "Getting started",
-    "section": "Installation",
-    "text": "Installation\nconda install -c munch-group iplot",
-    "crumbs": [
-      "Getting started"
-    ]
-  },
-  {
-    "objectID": "pages/getting_started.html#seaborn",
-    "href": "pages/getting_started.html#seaborn",
-    "title": "Getting started",
-    "section": "Seaborn",
-    "text": "Seaborn\nThe iplot function produces a widget with dropdown menus that lets you change all the specified dimensions of your visualization.\nYou can load an example data frame like this:\n\nimport seaborn as sns\ndata = sns.load_dataset('penguins')\n\n\nDisplay the widget:\n\nfrom iplot import iplot\n\niplot(data)",
-    "crumbs": [
-      "Getting started"
-    ]
-  },
-  {
-    "objectID": "pages/getting_started.html#learning-more",
-    "href": "pages/getting_started.html#learning-more",
-    "title": "Getting started",
-    "section": "Learning more",
-    "text": "Learning more\n\nSeaborn scientific visualization.\nPandas data structures.\nJupyter notebooks.",
-    "crumbs": [
-      "Getting started"
-    ]
-  },
-  {
-    "objectID": "api/index.html",
-    "href": "api/index.html",
-    "title": "Function reference",
-    "section": "",
-    "text": "seaborn\nThis function is a wrapper for seaborn plots. It creates a set of dropdowns",
-    "crumbs": [
-      "Library reference",
-      "Function reference"
-    ]
-  },
-  {
-    "objectID": "api/index.html#some-section",
-    "href": "api/index.html#some-section",
-    "title": "Function reference",
-    "section": "",
-    "text": "seaborn\nThis function is a wrapper for seaborn plots. It creates a set of dropdowns",
-    "crumbs": [
-      "Library reference",
-      "Function reference"
-    ]
-  },
-  {
-    "objectID": "examples/showcase.html",
-    "href": "examples/showcase.html",
-    "title": "Showcase",
-    "section": "",
-    "text": "import sys\nimport pandas as pd\nimport numpy as np\n\nimport seaborn as sns\n\nimport iplot\nimport iplot as wp\n\n\nimport importlib\nimportlib.reload(iplot)\n\n#wp.set_options(max_figure_width=4)\n\n#wp.set_options(x=None, y=None, col=None, graphics=[sns.scatterplot, sns.boxplot], theme={'style': 'darkgrid', 'palette': 'colorblind'})\n\n%config InlineBackend.figure_format = 'retina'"
-  },
-  {
-    "objectID": "examples/showcase.html#dummy-data",
-    "href": "examples/showcase.html#dummy-data",
-    "title": "Showcase",
-    "section": "Dummy data",
-    "text": "Dummy data\n\ndata = sns.load_dataset('penguins')\n\n# l = [data]\n# data_copy = data.loc[data.species == 'Adelie', :]\n# data_copy['species'] = 'foo'\n# l.append(data_copy)\n# data_copy = data.loc[data.species == 'Adelie', :]\n# data_copy['species'] = 'bar'\n# l.append(data_copy)\n# # data_copy = data.loc[data.species == 'Adelie', :]\n# # data_copy['species'] = 'baz'\n# # l.append(data_copy)\n# data = pd.concat(l)\n\ndata.head()\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nMale\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nFemale\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nFemale\n\n\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n4\nAdelie\nTorgersen\n36.7\n19.3\n193.0\n3450.0\nFemale"
-  },
-  {
-    "objectID": "examples/showcase.html#examples",
-    "href": "examples/showcase.html#examples",
-    "title": "Showcase",
-    "section": "Examples",
-    "text": "Examples\n\nwp.seaborn(data)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nimport seaborn as sns\nsns.set_style({'style': 'darkgrid', 'palette': 'viridis'})                             \ng = sns.relplot(data, x='species', y='island', col='island', row='species', height=2, kind='scatter', \n                facet_kws=dict(margin_titles=True))\ng.set_titles(col_template=\"{col_name}\", row_template=\"{row_name}\")\ng.tight_layout() ;\n\n\n\n\n\n\n\n\n\ndef find_facet_size(min_sq_size, max_sq_size):\n\n    sq_size = (min_sq_size + max_sq_size) / 2\n    if abs(sq_size - min_sq_size) &lt; 0.01 or abs(sq_size - max_sq_size) &lt; 0.01:\n        return sq_size\n    sq_per_row = OPTIONS['max_figure_width'] // sq_size\n    sq_per_col = OPTIONS['max_figure_height'] // sq_size\n    sq_fitted = sq_per_row * sq_per_col\n    if sq_fitted &lt; col_cats:\n        return find_facet_size(min_sq_size, sq_size)\n    else:\n        return find_facet_size(sq_size, max_sq_size)\n\nfrom math import sqrt\ncol_cats = 3\nOPTIONS = {}\nOPTIONS['max_figure_width'] = 10\nOPTIONS['max_figure_height'] = 5\n\nmax_square_size = sqrt(OPTIONS['max_figure_height'] * OPTIONS['max_figure_width'] / col_cats)\n\nfind_facet_size(0, max_square_size)\n\n3.340938158288254\n\n\n\nimport math\nmath.sqrt(5 * 10 / 3)\n\n4.08248290463863\n\n\n\nimport seaborn as sns\nsns.set_style({'style': 'darkgrid', 'palette': 'viridis'})                             \nsns.relplot(data, x='bill_length_mm', y='bill_depth_mm', hue='flipper_length_mm', \n            row='island', col='species', \n            palette='viridis', kind='scatter', height=2) ;\n\n\n\n\n\n\n\n\n\nfrom ipywidgets import interact\nimport matplotlib.pyplot as plt\n\n@interact\ndef show_more_than(col1='bill_length_mm', min_col1=55, col2='bill_depth_mm', min_col2=15):\n    with pd.option_context('display.max_rows', None,):\n        display(data.loc[(data[col1] &gt; min_col1) & (data[col2] &gt; min_col2)])\n    \n\n\n\n\n\nimport matplotlib.colors\n@interact\ndef show_more_than(col1=['bill_length_mm', 'bill_depth_mm'], min_col1=55, col2='bill_depth_mm', min_col2=15):\n    df = data.loc[(data[col1] &gt; min_col1) & (data[col2] &gt; min_col2)]\n    norm =  matplotlib.colors.Normalize(\n        vmin=30,#data['bill_length_mm'].min(), \n        vmax=60,#data['bill_length_mm'].max()\n    )\n    ax = sns.scatterplot(df, x='flipper_length_mm', y='body_mass_g', hue='bill_length_mm', hue_norm=norm,\n                    # vmin=10, #data['bill_length_mm'].min(), \n                    # vmax=20, #data['bill_length_mm'].max()\n                   )\n    plt.xlabel('flipper_length_mm')\n    plt.ylabel('body_mass_g')\n    a, b = data['flipper_length_mm'].min(), data['flipper_length_mm'].max()\n    a -= abs(a - b)*.01\n    b += abs(a - b)*.01\n    plt.xlim(a, b)\n    a, b = data.body_mass_g.min(), data.body_mass_g.max()\n    a -= a*0.03\n    b += b*0.03\n    # ax.collections[0].set_clim(df['bill_depth_mm'].min(), df['bill_depth_mm'].max()) \n\n    \n    plt.ylim(a, b)    \n\n\n\n\n\nimport seaborn as sns\nsns.set_style({'style': 'darkgrid', 'palette': 'viridis'})                             \nsns.boxplot(data, x='island', y='bill_length_mm', hue=None, gap=0.1, dodge=True) ;\n\n\n\n\n\n\n\n\n\ns = \"\"\"\nasdfa\n\n&lt;details&gt;\n&lt;summary&gt;Show code for plot&lt;/summary&gt;\n\n\n\n```python\nakljsdf alsdf asd\n```\n\n&lt;/details&gt;\n\n\"\"\"\nMarkdown(s)\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[13], line 16\n      1 s = \"\"\"\n      2 asdfa\n      3 \n   (...)     14 \n     15 \"\"\"\n---&gt; 16 Markdown(s)\n\nNameError: name 'Markdown' is not defined\n\n\n\n\nwp.seaborn(data, x='species', y='body_mass_g', hue='island', plot='boxplot',\n           col='island', row='sex',\n          )\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[14], line 1\n----&gt; 1 wp.seaborn(data, x='species', y='body_mass_g', hue='island', plot='boxplot',\n      2            col='island', row='sex',\n      3           )\n\nTypeError: seaborn() got an unexpected keyword argument 'plot'\n\n\n\n\nfrom ipywidgets import interact, interact_manual\n@interact(plot=[('scatter', sns.scatterplot), ('boxplot', sns.boxplot)], \n                 x=['a', 'b', 'c'],\n                )\ndef h(**kwargs):\n    print(kwargs)\n\n\n\n\n\nimport matplotlib.pyplot as plt\n\n\n#%matplotlib inline\nimport ipywidgets as widgets\n\nslider = widgets.IntSlider(value=5, min=1, max=10, step=1)\n#Create your button.\nbutton = widgets.Button(description=\"Plot\")\n#Output field.\noutput = widgets.Output()\n\n#function to handle input.\ndef showOutput(btn):\n    output.clear_output()\n    return_value = slider.value\n    fig = plt.plot(return_value, return_value)\n    with output:\n        plt.show()\n        # print(return_value)\n\nbutton.on_click(showOutput)\n\nui = widgets.HBox([slider, button]), widgets.HBox([output])\ndisplay(*ui)\n\n\n\n\n\n\n\n\nimport ipywidgets as widgets\nslider = widgets.IntSlider(value=5, min=1, max=10, step=1)\n#Create your button.\nbutton = widgets.Button(description=\"Go\")\n#Output field.\noutput = widgets.Output()\n\n#function to handle input.\ndef showOutput(btn):\n    output.clear_output()\n    return_value = slider.value\n    with output:\n        print(return_value)\n\nbutton.on_click(showOutput)\n\nui = widgets.HBox([slider, button, output])\nui\n\n\n\n\n\nfrom ipywidgets import interactive\nfrom IPython.display import display\n\nmy_widget = interactive(h, plot=[('scatter', sns.scatterplot), ('boxplot', sns.boxplot)], __manual=True)\ndisplay(my_widget)\n\n\n\n\n\nwp.seaborn(data, x='bill_length_mm', y='body_mass_g', hue='body_mass_g', #plot='boxplot',\n           col='species'\n          )\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n# import matplotlib as mpl\n# import matplotlib.pyplot as plt\n\n# cmap= sns.color_palette('ch:', as_cmap= True)\n# sm = plt.cm.ScalarMappable(cmap= cmap, norm=mpl.colors.Normalize())\n\nwp.seaborn(data, #plot='scatterplot', \n           x='bill_length_mm', y='body_mass_g', hue='body_mass_g', col='species')\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nwp.seaborn(data, x='bill_length_mm', y='bill_depth_mm', hue='sex', #plot='scatterplot', \n          # palette='colorblind'\n          )\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsns.scatterplot(data, x='bill_length_mm', y='bill_depth_mm', hue='sex', \n              #  palette='colorblind'\n               )\n\n\n\n\n\n\n\n\n\nwp.seaborn(data=data, x='bill_length_mm', y='bill_depth_mm', hue='body_mass_g', \n           # style='sex', \n           # size='body_mass_g', \n           col='species', row='island',\n          wrap=3, theme={'palette': 'Set1'})\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[24], line 1\n----&gt; 1 wp.seaborn(data=data, x='bill_length_mm', y='bill_depth_mm', hue='body_mass_g', \n      2            # style='sex', \n      3            # size='body_mass_g', \n      4            col='species', row='island',\n      5           wrap=3, theme={'palette': 'Set1'})\n\nTypeError: seaborn() got an unexpected keyword argument 'wrap'\n\n\n\n\nwp.seaborn(data, plot='boxplot', x='species', y='bill_depth_mm')\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[25], line 1\n----&gt; 1 wp.seaborn(data, plot='boxplot', x='species', y='bill_depth_mm')\n\nTypeError: seaborn() got an unexpected keyword argument 'plot'\n\n\n\n\nwp.seaborn(data, plot='histplot', x='bill_depth_mm', hue='sex', row='species', col='island')\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[26], line 1\n----&gt; 1 wp.seaborn(data, plot='histplot', x='bill_depth_mm', hue='sex', row='species', col='island')\n\nTypeError: seaborn() got an unexpected keyword argument 'plot'\n\n\n\n\nwp.seaborn(data, x='bill_length_mm', y='bill_depth_mm', row='species', col='island')\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nwp.seaborn(data=data, x='bill_length_mm', y='bill_depth_mm')\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nwp.seaborn(data=data, x='bill_length_mm', y='bill_depth_mm', graphics=[sns.lmplot])\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[30], line 1\n----&gt; 1 wp.seaborn(data=data, x='bill_length_mm', y='bill_depth_mm', graphics=[sns.lmplot])\n\nTypeError: seaborn() got an unexpected keyword argument 'graphics'\n\n\n\n\nwp.seaborn(data, x='bill_length_mm', y='bill_depth_mm', hue='species', graphics=[sns.lmplot])\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[31], line 1\n----&gt; 1 wp.seaborn(data, x='bill_length_mm', y='bill_depth_mm', hue='species', graphics=[sns.lmplot])\n\nTypeError: seaborn() got an unexpected keyword argument 'graphics'\n\n\n\n\nwp.seaborn(data, x='bill_length_mm', y='bill_depth_mm', graphics=[sns.scatterplot])\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[32], line 1\n----&gt; 1 wp.seaborn(data, x='bill_length_mm', y='bill_depth_mm', graphics=[sns.scatterplot])\n\nTypeError: seaborn() got an unexpected keyword argument 'graphics'\n\n\n\n\nwp.seaborn(data, x='bill_length_mm', y='bill_depth_mm', hue='species', graphics=[sns.kdeplot])\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[33], line 1\n----&gt; 1 wp.seaborn(data, x='bill_length_mm', y='bill_depth_mm', hue='species', graphics=[sns.kdeplot])\n\nTypeError: seaborn() got an unexpected keyword argument 'graphics'\n\n\n\n\n\n\n\n\n\n\n\n\n\nwp.seaborn(data, x='bill_length_mm', y='bill_depth_mm', hue='sex', plot='scatterplot', palette='colorblind')\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[34], line 1\n----&gt; 1 wp.seaborn(data, x='bill_length_mm', y='bill_depth_mm', hue='sex', plot='scatterplot', palette='colorblind')\n\nTypeError: seaborn() got an unexpected keyword argument 'plot'\n\n\n\n\ng = sns.FacetGrid(data, row='species', col='island', hue='sex')\ng.map_dataframe(sns.regplot, x='bill_depth_mm', y='bill_length_mm')"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "iplot",
-    "section": "",
-    "text": "iplot"
-  },
-  {
-    "objectID": "examples/widgets.html",
-    "href": "examples/widgets.html",
-    "title": "Dummy data",
-    "section": "",
-    "text": "import sys\nimport pandas as pd\nimport numpy as np\nimport seaborn as sns\n\nfrom widgetplots import menu_plot\n%config InlineBackend.figure_format = 'retina'\n\n\n---------------------------------------------------------------------------\nModuleNotFoundError                       Traceback (most recent call last)\nCell In[1], line 6\n      3 import numpy as np\n      4 import seaborn as sns\n----&gt; 6 from widgetplots import menu_plot\n      7 get_ipython().run_line_magic('config', \"InlineBackend.figure_format = 'retina'\")\n\nModuleNotFoundError: No module named 'widgetplots'\nimport sys\nimport pandas as pd\nimport numpy as np\nimport ipywidgets \nimport seaborn as sns\nimport matplotlib.pyplot as plt \n%config InlineBackend.figure_format = 'retina'\ncov = np.array([[6, 3], [3, 3.5]])\nmultinorm = np.random.multivariate_normal([5, 10], cov, size=100)\ndf = pd.DataFrame({'math score': multinorm[:, 0],\n                       'reading score': multinorm[:, 1], \n                       'writing score': np.random.normal(2, 2, 100),\n                   'gender': np.random.choice(['male', 'female'], size=100),\n                   'race/ethnicity': np.random.choice(['group A', 'group B', 'group C', 'group D', 'group E'], size=100),\n                    'lunch': np.random.choice(['free', 'standard'], size=100),\n                    'parental education': np.random.choice(['highschool', 'bachelor', 'master'], size=100),\n                    'preparation course': np.random.choice(['completed', 'none'], size=100)\n                  })\ndf.head()\n\n\n\n\n\n\n\n\nmath score\nreading score\nwriting score\ngender\nrace/ethnicity\nlunch\nparental education\npreparation course\n\n\n\n\n0\n3.648794\n7.544339\n2.589042\nmale\ngroup B\nfree\nhighschool\nnone\n\n\n1\n6.580344\n10.534794\n3.087276\nmale\ngroup C\nfree\nmaster\nnone\n\n\n2\n5.479877\n10.443991\n4.772000\nfemale\ngroup B\nfree\nbachelor\nnone\n\n\n3\n5.645676\n12.214279\n1.251577\nfemale\ngroup D\nfree\nmaster\ncompleted\n\n\n4\n3.768076\n9.548172\n-2.040344\nmale\ngroup C\nfree\nbachelor\ncompleted\ndef scatter(x,y,hue):\n    plt.close('all')\n    fig = plt.figure(figsize=(8,4))\n    sns.scatterplot(data=df,x=x,y=y,hue=hue)\n    plt.title('Scatterplot of ' +x+' versus '+ y)\n    plt.show()\n    \ndrop_down_x = ipywidgets.Dropdown(options=list(df.drop(['math score','reading score', 'writing score'],axis=1).columns),\n                                value=list(df.drop(['math score','reading score', 'writing score'],axis=1).columns)[0],\n                                description='X variable:',\n                                disabled=False)\n\ndrop_down_y = ipywidgets.Dropdown(options=list(['math score','reading score', 'writing score']),\n                                value=list(['math score','reading score', 'writing score'])[0],\n                                description='Y variable:',\n                                disabled=False)\n\ndrop_down_hue= ipywidgets.Dropdown(options=list(df.drop(['math score','reading score', 'writing score'],axis=1).columns),\n                                value=list(df.drop(['math score','reading score', 'writing score'],axis=1).columns)[0],\n                                description='Hue:',\n                                disabled=False)\n\nin3 = ipywidgets.HBox([drop_down_x,drop_down_y,drop_down_hue])\nout3 = ipywidgets.interactive_output(scatter,\n                                     {'x' : drop_down_x,\n                                     'y': drop_down_y,\n                                     'hue':drop_down_hue})\ndisplay(in3, out3)\ndef boxplot(selected_x, selected_y):\n    plt.close('all')\n    fig = plt.figure(figsize=(8,4))\n    sns.boxplot(x=df[selected_x],y=df[selected_y])\n    plt.title(f'Boxplot of {selected_y} for {selected_x}')\n    plt.show()\n    \ndrop_down_x = ipywidgets.Dropdown(options=list(df.drop(['math score','reading score', 'writing score'],axis=1).columns),\n                                value=list(df.drop(['math score','reading score', 'writing score'],axis=1).columns)[0],\n                                description='X variable:',\n                                disabled=False)\n\ndrop_down_y = ipywidgets.Dropdown(options=list(['math score','reading score', 'writing score']),\n                                value=list(['math score','reading score', 'writing score'])[0],\n                                description='Y variable:',\n                                disabled=False)\n\nin1 = ipywidgets.HBox([drop_down_x, drop_down_y])\nout1 = ipywidgets.interactive_output(boxplot,\n                                     {'selected_x' : drop_down_x, 'selected_y' : drop_down_y})\ndisplay(in1, out1)"
-  },
-  {
-    "objectID": "examples/widgets.html#generic-plot-with-menus",
-    "href": "examples/widgets.html#generic-plot-with-menus",
-    "title": "Dummy data",
-    "section": "Generic plot with menus",
-    "text": "Generic plot with menus\n\ngraphics = [\n    sns.boxplot, \n    sns.scatterplot, \n    sns.violinplot,\n    sns.boxenplot, \n    sns.swarmplot,\n    sns.stripplot,\n    sns.kdeplot,\n    sns.barplot,\n]\n\ndef interactive_plot(df, defaults, graphics=graphics, strings_as_cats=False, palette=\"colorblind\"):\n    def plot(selected_x, selected_y, selected_hue=None, selected_plot=graphics[0]):\n        plt.close('all')\n        fig, ax = plt.subplots(1, 1, figsize=(8,4))\n        sns.set_style('ticks')\n        kwargs = dict(x=df[selected_x], y=df[selected_y])\n        if selected_hue in df:\n            kwargs['hue'] = df[selected_hue]\n            kwargs['palette'] = palette\n        try:\n            selected_plot(**kwargs, ax=ax)\n        except TypeError as e:\n            print(f\"{str(e).split(',')[0]}. That does not compatible with {selected_plot.__name__}\", file=sys.stderr)\n            plt.close('all')            \n            return\n        plt.title(f'{selected_plot.__name__.capitalize()} of {selected_y} for {selected_x}')\n        handles, labels = ax.get_legend_handles_labels()\n        if labels:\n            ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))\n        sns.despine()\n        plt.show()\n    \n    categorical_col_names = df.columns[(df.map(type) == str).all(0)].to_list()\n\n    dropdowns = {}\n    if 'plot' in defaults:\n        plot_options = [(g.__name__, g) for g in graphics]\n        names, funs = zip(*plot_options)\n        i = names.index(defaults['plot'])\n        options = plot_options[i:i+1] + plot_options[:i] + plot_options[i+1:] \n        drop_down_plot = ipywidgets.Dropdown(options=options, description='Plot:', disabled=False)\n        dropdowns['selected_plot'] = drop_down_plot\n    if 'x' in defaults:\n        x_options = df.columns.to_list()\n        drop_down_x = ipywidgets.Dropdown(options=x_options, value=defaults['x'], description='X variable:', disabled=False)\n        dropdowns['selected_x'] = drop_down_x\n    if 'y' in defaults:\n        if strings_as_cats:\n            y_options = df.drop(categorical_col_names,axis=1).columns\n        else:\n            y_options = df.columns.to_list()\n        drop_down_y = ipywidgets.Dropdown(options=y_options, value=defaults['y'], description='Y variable:', disabled=False)\n        dropdowns['selected_y'] = drop_down_y\n    if 'hue' in defaults:\n        if strings_as_cats:\n            hue_options = df.columns[(df.map(type) == str).all(0)]\n        else:\n            hue_options = df.columns.to_list()\n        drop_down_hue= ipywidgets.Dropdown(options=hue_options, value=defaults['hue'], description='Hue:', disabled=False)\n        dropdowns['selected_hue'] = drop_down_hue\n\n    display(ipywidgets.HBox(list(dropdowns.values())),\n            ipywidgets.interactive_output(plot, dropdowns))"
-  },
-  {
-    "objectID": "examples/widgets.html#examples",
-    "href": "examples/widgets.html#examples",
-    "title": "Dummy data",
-    "section": "Examples",
-    "text": "Examples\n\ndefaults = {'x':'gender', 'y':'math score', 'hue':'race/ethnicity', 'plot':'boxplot'}\nmenu_plot(df, defaults, strings_as_cats=True, palette=\"tab10\")\n\n\n\n\n\n\n\n\ndefaults = {'x':'reading score', 'y':'math score', 'hue':'parental education', 'plot':'scatterplot'}\nmenu_plot(df, defaults)\n\n\n\n\n\n\n\n\ndefaults = {'x':'gender', 'y':'math score', 'plot':'swarmplot'}\nmenu_plot(df, defaults)\n\n\n\n\n\n\n\n\ndefaults = {'x':'reading score', 'y':'writing score'}\nmenu_plot(df, defaults, graphics=[sns.scatterplot])\n\n\n\n\n\n\n\n\ndefaults = {'x':'reading score', 'y':'math score', 'hue':'gender'}\nmenu_plot(df, defaults, graphics=[sns.kdeplot])"
-  },
-  {
-    "objectID": "api/seaborn.html",
-    "href": "api/seaborn.html",
-    "title": "seaborn",
-    "section": "",
-    "text": "iplot.seaborn(\n    data\n    plot=None\n    graphics=None\n    wrap=3\n    theme={'context': 'notebook', 'style': 'darkgrid', 'palette': 'viridis'}\n    **kwargs\n)\nThis function is a wrapper for seaborn plots. It creates a set of dropdowns for the most common parameters in seaborn plots.\n\n\n\ndata : pandas.DataFrame\n\nThe data to be plotted. A pandas.DataFrame.\n\nplot : str = None\n\nThe seaborn plot to be used. Default is 'scatterplot'.\n\ngraphics : list = None\n\nA list of seaborn plotting functions to be used. Default is a list of common seaborn plotting functions.\n\nwrap : int = 3\n\nMax number of dropdowns in each row.\n\ntheme : dict = {'context': 'notebook', 'style': 'darkgrid', 'palette': 'viridis'}\n\nDictionary with keyword arguments for seaborn.set_theme().\n\n****kwargs** : int | str | float = {}\n\nExtra arguments passed to seaborn plotting function, such as x, y, hue, row, col, palette, style. See the seaborn documentation for all possible arguments. list of all possible arguments.\n\n\n\n\n\n\n : IPython.display.DisplayHandle\n\nThe display of two widgets objects: an HBox with the dropdowns and a seaborn plot.\n\n\n\n\n\nThis code will display a scatter plot of flipper_length_mm against body_mass_g with dropdown menus for x, y, and hue variables. Selecting form the dropdowns will update the plot.\nimport seaborn as sns\nimport iplot as pw\ndata = sns.load_dataset('penguins')\npw.seaborn(data, x='flipper_length_mm', y='body_mass_g', hue='species')",
-    "crumbs": [
-      "Some section",
-      "seaborn"
-    ]
-  },
-  {
-    "objectID": "api/seaborn.html#parameters",
-    "href": "api/seaborn.html#parameters",
-    "title": "seaborn",
-    "section": "",
-    "text": "data : pandas.DataFrame\n\nThe data to be plotted. A pandas.DataFrame.\n\nplot : str = None\n\nThe seaborn plot to be used. Default is 'scatterplot'.\n\ngraphics : list = None\n\nA list of seaborn plotting functions to be used. Default is a list of common seaborn plotting functions.\n\nwrap : int = 3\n\nMax number of dropdowns in each row.\n\ntheme : dict = {'context': 'notebook', 'style': 'darkgrid', 'palette': 'viridis'}\n\nDictionary with keyword arguments for seaborn.set_theme().\n\n****kwargs** : int | str | float = {}\n\nExtra arguments passed to seaborn plotting function, such as x, y, hue, row, col, palette, style. See the seaborn documentation for all possible arguments. list of all possible arguments.",
-    "crumbs": [
-      "Some section",
-      "seaborn"
-    ]
-  },
-  {
-    "objectID": "api/seaborn.html#returns",
-    "href": "api/seaborn.html#returns",
-    "title": "seaborn",
-    "section": "",
-    "text": ": IPython.display.DisplayHandle\n\nThe display of two widgets objects: an HBox with the dropdowns and a seaborn plot.",
-    "crumbs": [
-      "Some section",
-      "seaborn"
-    ]
-  },
-  {
-    "objectID": "api/seaborn.html#examples",
-    "href": "api/seaborn.html#examples",
-    "title": "seaborn",
-    "section": "",
-    "text": "This code will display a scatter plot of flipper_length_mm against body_mass_g with dropdown menus for x, y, and hue variables. Selecting form the dropdowns will update the plot.\nimport seaborn as sns\nimport iplot as pw\ndata = sns.load_dataset('penguins')\npw.seaborn(data, x='flipper_length_mm', y='body_mass_g', hue='species')",
-    "crumbs": [
-      "Some section",
-      "seaborn"
-    ]
-  },
-  {
-    "objectID": "pages/example.html",
-    "href": "pages/example.html",
-    "title": "Example",
-    "section": "",
-    "text": "import pandas as pd\nimport seaborn as sns\nfrom iplot import iplot, iplot_settings"
-  },
-  {
-    "objectID": "pages/example.html#dummy-data",
-    "href": "pages/example.html#dummy-data",
-    "title": "Example",
-    "section": "Dummy data",
-    "text": "Dummy data\n\ndata = sns.load_dataset('penguins')\ndata.head()\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nMale\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nFemale\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nFemale\n\n\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n4\nAdelie\nTorgersen\n36.7\n19.3\n193.0\n3450.0\nFemale"
-  },
-  {
-    "objectID": "pages/example.html#show-the-widget",
-    "href": "pages/example.html#show-the-widget",
-    "title": "Example",
-    "section": "Show the widget",
-    "text": "Show the widget\nSelect from the dropdown menus as many data features (columns) you want represented in the plot. The Plot dropdown menu automatically update to only show the plots available to your selection. Click the “Show plot” to render the plot. To reveal the code required to make the plot yourself, click the “Show code for plot”.\n\niplot(data)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nimport seaborn as sns\nsns.set_style({'style': 'darkgrid', 'palette': 'viridis'})                             \ng = sns.displot(data, x='island', y='species', height=5, kind='hist')\ng.set_titles(col_template=\"{col_name}\", row_template=\"{row_name}\")\ng.tight_layout()\n\n\n\n\n\n\n\n\n\niplot(data_frame, x='bill_length_mm', y='bill_depth_mm', hue='species', col='island', row='sex')"
   }
 ]
