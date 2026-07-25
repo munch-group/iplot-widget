@@ -4,21 +4,33 @@
     "href": "pages/example.html",
     "title": "Example",
     "section": "",
-    "text": "import pandas as pd\nimport seaborn as sns\nfrom iplot_widget import iplot, iplot_settings"
+    "text": "import pandas as pd\nimport seaborn as sns\nfrom iplot_widget import iplot, iplot_settings",
+    "crumbs": [
+      "Examples",
+      "Example"
+    ]
   },
   {
     "objectID": "pages/example.html#dummy-data",
     "href": "pages/example.html#dummy-data",
     "title": "Example",
     "section": "Dummy data",
-    "text": "Dummy data\n\ndata = sns.load_dataset('penguins')\ndata.head()\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nMale\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nFemale\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nFemale\n\n\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n4\nAdelie\nTorgersen\n36.7\n19.3\n193.0\n3450.0\nFemale"
+    "text": "Dummy data\n\ndata = sns.load_dataset('penguins')\ndata.head()\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nMale\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nFemale\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nFemale\n\n\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n4\nAdelie\nTorgersen\n36.7\n19.3\n193.0\n3450.0\nFemale",
+    "crumbs": [
+      "Examples",
+      "Example"
+    ]
   },
   {
     "objectID": "pages/example.html#show-the-widget",
     "href": "pages/example.html#show-the-widget",
     "title": "Example",
     "section": "Show the widget",
-    "text": "Show the widget\nSelect from the dropdown menus as many data features (columns) you want represented in the plot. The Plot dropdown menu automatically update to only show the plots available to your selection. Click the “Show plot” to render the plot. To reveal the code required to make the plot yourself, click the “Show code for plot”.\n\niplot(data)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nimport seaborn as sns\nsns.set_style({'style': 'darkgrid', 'palette': 'viridis'})                             \ng = sns.displot(data, x='island', y='species', height=5, kind='hist')\ng.set_titles(col_template=\"{col_name}\", row_template=\"{row_name}\")\ng.tight_layout()\n\n\n\n\n\n\n\n\n\niplot(data, x='bill_length_mm', y='bill_depth_mm', hue='species', col='island', row='sex')"
+    "text": "Show the widget\nSelect from the dropdown menus as many data features (columns) you want represented in the plot. The Plot dropdown menu automatically update to only show the plots available to your selection. Click the “Show plot” to render the plot. To reveal the code required to make the plot yourself, click the “Show code for plot”.\n\niplot(data)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nimport seaborn as sns\nsns.set_style({'style': 'darkgrid', 'palette': 'viridis'})                             \ng = sns.displot(data, x='island', y='species', height=5, kind='hist')\ng.set_titles(col_template=\"{col_name}\", row_template=\"{row_name}\")\ng.tight_layout()\n\n\n\n\n\n\n\n\n\niplot(data, x='bill_length_mm', y='bill_depth_mm', hue='species', col='island', row='sex')",
+    "crumbs": [
+      "Examples",
+      "Example"
+    ]
   },
   {
     "objectID": "pages/getting_started.html",
@@ -45,7 +57,7 @@
     "href": "pages/getting_started.html#seaborn",
     "title": "Getting started",
     "section": "Seaborn",
-    "text": "Seaborn\nThe iplot_widget.iplot function produces a widget with dropdown menus that lets you change all the specified dimensions of your visualization.\nYou can load an example data frame like this:\n\nimport seaborn as sns\ndata = sns.load_dataset('penguins')\n\n\nDisplay the widget:\n\nfrom iplot_widget import iplot\n\niplot(data)",
+    "text": "Seaborn\nThe iplot_widget.iplot function produces a widget with dropdown menus that lets you change all the specified dimensions of your visualization.\nYou can load an example data frame like this:\nimport seaborn as sns\ndata = sns.load_dataset('penguins')\n\nDisplay the widget:\nfrom iplot_widget import iplot\n\niplot(data)",
     "crumbs": [
       "Getting started"
     ]
