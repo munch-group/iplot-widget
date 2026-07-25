@@ -50,7 +50,7 @@ channels = ["conda-forge", "munch-group"]
 platforms = ["osx-arm64", "linux-64"]
 
 [tool.pixi.dependencies]
-python = ">=3.9,<3.14"
+python = ">=3.9,<=3.14"
 pytest = "*"
 jupyter = "*"
 quarto = "*"
