@@ -58,7 +58,7 @@ website:
         #     - pages/seaborn.qmd            
         - section: "Examples"
           contents:
-            - examples/example.ipynb            
+            - pages/example.ipynb            
             # - examples/widgets.ipynb            
         - section: "Library reference"
           contents:

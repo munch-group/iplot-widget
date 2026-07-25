@@ -2,11 +2,6 @@
 title: Getting started
 aliases:
   - ../index.html
-jupyter:
-  kernelspec:
-    display_name: Python 3 (ipykernel)
-    language: python
-    name: python3
 ---
 
 **iplot** lets you explore the relationships between variables in a dataset using the standard visualization libraries - without writing new code for each plot. 
@@ -25,7 +20,7 @@ The [](`iplot_widget.iplot`) function produces a widget with dropdown menus that
 
 You can load an example data frame like this:
 
-```{python}
+```python
 import seaborn as sns
 data = sns.load_dataset('penguins')
 ```
@@ -33,7 +28,7 @@ data = sns.load_dataset('penguins')
 <!-- You pass the data as the first argument to [](`~iplot.seaborn`) and give keyword arguments for the plot variables you want to control. The values of keyword arguments are the variables in the data frame that are initially displayed. (This is not live code, so the plot below will not update if you use the dropdowns). -->
 Display the widget:
 
-```{python}
+```python
 from iplot_widget import iplot
 
 iplot(data)
