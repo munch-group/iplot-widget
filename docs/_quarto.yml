@@ -45,7 +45,7 @@ website:
         text: Reference
     right:
       - icon: github
-        href: https://github.com/munch-group/iplot/
+        href: https://github.com/munch-group/iplot-widget/
   sidebar:
     - id: pages
       title: Get Started
@@ -79,7 +79,7 @@ format:
 quartodoc:
   style: pkgdown
   dir: api
-  package: iplot
+  package: iplot_widget
   render_interlinks: true
   options:
     signature_name: full

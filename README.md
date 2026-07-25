@@ -1,5 +1,5 @@
 
-![](https://github.com/munch-group/iplot/actions/workflows/quarto-publish.yml/badge.svg?event=push)
+![](https://github.com/munch-group/iplot-widget/actions/workflows/quarto-publish.yml/badge.svg?event=push)
 
 # iplot
 
@@ -8,20 +8,20 @@ get dropdowns for `x`, `y`, `hue`, `row`, and `col` plus a plot-type picker —
 explore a dataset's relationships without writing new plotting code for every
 view.
 
-See [munch-group.org/iplot](https://munch-group.org/iplot) for the full docs
+See [munch-group.org/iplot-widget](https://munch-group.org/iplot-widget) for the full docs
 and examples.
 
 ## Installation
 
 ```bash
-conda install -c munch-group iplot
+conda install -c munch-group iplot-widget
 ```
 
 ## Quick start
 
 ```python
 import seaborn as sns
-from iplot import iplot
+from iplot_widget import iplot
 
 data = sns.load_dataset('penguins')
 iplot(data)

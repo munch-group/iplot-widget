@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "iplot"
+name = "iplot-widget"
 version = "0.1.12"
 description = "Interactive seaborn plotting widgets for Jupyter"
 authors = [
@@ -24,12 +24,12 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/munch-group/iplot"
-Repository = "https://github.com/munch-group/iplot"
-Documentation = "https://munch-group.org/iplot"
+Homepage = "https://github.com/munch-group/iplot-widget"
+Repository = "https://github.com/munch-group/iplot-widget"
+Documentation = "https://munch-group.org/iplot-widget"
 
 [project.scripts]
-iplot = "iplot:iplot"
+iplot-widget = "iplot_widget:iplot"
 
 [tool.setuptools]
 include-package-data = true
@@ -39,10 +39,10 @@ where = ["src"]
 exclude = ["test*"]
 
 [tool.setuptools.package-data]
-iplot = ["data/*.txt", "data/*.csv", "data/*.pickle", "data/*.h5"]
+iplot_widget = ["data/*.txt", "data/*.csv", "data/*.pickle", "data/*.h5"]
 
 [tool.pixi.workspace]
-name = "iplot"
+name = "iplot-widget"
 version = "0.1.12"
 description = "Interactive seaborn plotting widgets for Jupyter"
 authors = ["Kasper Munch <kaspermunch@birc.au.dk>"]

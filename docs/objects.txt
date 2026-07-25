@@ -1,9 +1,8 @@
 # Sphinx inventory version 2
-# Project: iplot
+# Project: iplot_widget
 # Version: 0.0.9999
 # The remainder of this file is compressed using zlib.
-iplot.iplot.iplot py:function 1 api/iplot.html#iplot.iplot.iplot -
-iplot.iplot.iplot_settings py:function 1 api/iplot.html#iplot.iplot.iplot_settings -
-iplot.iplot py:module 1 api/iplot.html#iplot.iplot -
-iplot.iplot_settings py:function 1 api/iplot_settings.html#iplot.iplot_settings -
-iplot.iplot.iplot_settings py:function 1 api/iplot_settings.html#iplot.iplot_settings iplot.iplot_settings
+iplot_widget.iplot py:function 1 api/iplot.html#iplot_widget.iplot -
+iplot_widget.iplot_widget.iplot py:function 1 api/iplot.html#iplot_widget.iplot iplot_widget.iplot
+iplot_widget.iplot_settings py:function 1 api/iplot_settings.html#iplot_widget.iplot_settings -
+iplot_widget.iplot_widget.iplot_settings py:function 1 api/iplot_settings.html#iplot_widget.iplot_settings iplot_widget.iplot_settings

@@ -6,5 +6,5 @@
 
 | | |
 | --- | --- |
-| [iplot](iplot.qmd#iplot.iplot) |  |
-| [iplot_settings](iplot_settings.qmd#iplot.iplot_settings) | Calling `iplot.seaborn with only the `data` positional argument will display dropdowns for all plot dimensions and include  |
+| [iplot](iplot.qmd#iplot_widget.iplot) | This function is a wrapper for seaborn plots. It creates a set of dropdowns  |
+| [iplot_settings](iplot_settings.qmd#iplot_widget.iplot_settings) | Calling `iplot.seaborn with only the `data` positional argument will display dropdowns for all plot dimensions and include  |

@@ -21,7 +21,7 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: '3.x'
-      - run: pip install jupyter -e .  # -e . : the docs execute `import iplot`, so it must be installed
+      - run: pip install jupyter -e .  # -e . : the docs execute `import iplot_widget`, so it must be installed
 
       # - uses: r-lib/actions/setup-r@v2
       # - uses: r-lib/actions/setup-r-dependencies@v2

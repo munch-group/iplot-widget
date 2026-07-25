@@ -7,8 +7,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 `iplot` is a small Python library (single module) that wraps seaborn plotting
 functions in Jupyter/`ipywidgets` dropdowns, so a user can call `iplot(dataframe)`
 and interactively pick `x`, `y`, `hue`, `row`, `col`, and plot type without writing
-new plotting code per chart. All the logic lives in `src/iplot/iplot.py`, exposing
-`iplot()` and `iplot_settings()` (re-exported from `src/iplot/__init__.py`).
+new plotting code per chart. All the logic lives in `src/iplot_widget/iplot_widget.py`, exposing
+`iplot()` and `iplot_settings()` (re-exported from `src/iplot_widget/__init__.py`).
 
 The repo was generated from the `munch-group` library template
 (`munch-group/munch-group-library`) and is kept in sync with it; `scripts/rename.py`
@@ -41,12 +41,15 @@ holds `def test_*():` functions exercising iplot's public API (`iplot()`,
 every run) and runs it with pytest. To add a test, add a `test_*` function to
 that notebook — a plain `.py` file dropped in `tests/` won't be picked up.
 
-**Known gotcha:** `iplot/__init__.py` does `from .iplot import iplot`, which
-rebinds the `iplot` package's `.iplot` attribute from the submodule to the
-function. `import iplot.iplot as x` therefore silently binds `x` to the
-*function*, not the submodule — use `importlib.import_module("iplot.iplot")`
-to reach the submodule (e.g. for its `OPTIONS`/`AX2FIG` globals), as the test
-notebook does.
+**Naming note:** the module file shares its name with the package
+(`iplot_widget/iplot_widget.py`), but `__init__.py` does
+`from .iplot_widget import iplot, iplot_settings` — it imports the `iplot`
+and `iplot_settings` *names*, not `iplot_widget`, so the package's
+`.iplot_widget` attribute is never rebound. `import iplot_widget` then
+`iplot_widget.iplot_widget.OPTIONS`/`.AX2FIG` reaches the submodule's globals
+directly, no `importlib.import_module` workaround needed (this differs from
+the pre-rename `iplot` package, where the module, package, and function were
+all named `iplot` and did collide this way).
 
 The package version is set in **two places that must stay in sync**:
 `pyproject.toml` `[project].version` and `[tool.pixi.workspace].version`. The
@@ -73,12 +76,12 @@ rather than assuming either is correct if it comes up.
 - Docs are a Quarto + quartodoc website under `docs/` (`docs/_quarto.yml`),
   published to GitHub Pages on every push to `main` via
   `.github/workflows/quarto-publish.yml`. `quartodoc` autogenerates API reference
-  pages (`docs/api/`) from docstrings in `src/iplot/`; source files for the
+  pages (`docs/api/`) from docstrings in `src/iplot_widget/`; source files for the
   manual/example pages are `docs/pages/*.qmd` and `docs/examples/*.ipynb`. Use
   numpy-style docstrings (see `docs/autodoc.mustache` for the VS Code
   autoDocstring template referenced in `README.md`). Note the CI workflow
   installs iplot itself (`pip install jupyter -e .`) before rendering, because
-  `docs/pages/getting_started.qmd` actually calls `import iplot` — don't drop
+  `docs/pages/getting_started.qmd` actually calls `import iplot_widget` — don't drop
   that `-e .` when touching the workflow, it's not template boilerplate.
 - `pixi run docs` (execute notebooks in place) and `pixi run api` (build+render)
   are separate tasks now — run both to fully rebuild docs locally.
@@ -95,7 +98,7 @@ and `/review-apply` (apply findings in small test-gated batches). Run
 frontend and theming specialists were dropped during this sync — iplot has no
 CSS/JS/HTML/theming system for them to review.
 
-## Architecture notes for `src/iplot/iplot.py`
+## Architecture notes for `src/iplot_widget/iplot_widget.py`
 
 - `OPTIONS` (module-level dict) holds global defaults — default figure size,
   facet sizing bounds, the seaborn theme dict, and the list of allowed

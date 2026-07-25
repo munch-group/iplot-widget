@@ -95,21 +95,21 @@ def iplot_settings(**kwargs) -> None:
     Limit the plot dimensions to 'x', 'y' and set the available graphics to 'scatterplot' and 'lineplot'.
 
     ```python
-    import iplot as pw
+    import iplot_widget as pw
     pw.set_options(x=None, y=None, graphics=[sns.scatterplot, sns.lineplot])
     ```
 
     Do the same but set the default values for 'x' and 'y' to 'flipper_length_mm' and 'body_mass_g' respectively.
     
      ```python
-    import iplot as pw
+    import iplot_widget as pw
     pw.set_options(x='flipper_length_mm', y='body_mass_g', graphics=[sns.scatterplot, sns.lineplot])
     ```
 
     Set the color palette to 'colorblind':
 
     ```python
-    import iplot as pw
+    import iplot_widget as pw
     pw.set_options(theme={'palette': 'colorblind'})
     ```
     """    

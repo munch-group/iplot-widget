@@ -1,18 +1,18 @@
 {% set pyproject = load_file_data("../pyproject.toml", from_recipe_dir=True) %}
 
 package:
-  name: iplot
+  name: iplot-widget
   version: {{ pyproject.get("project").get("version") }}
 
 source:
-  git_url: https://github.com/munch-group/iplot.git
+  git_url: https://github.com/munch-group/iplot-widget.git
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv
   python_version_independent: true
   entry_points:
-    - iplot = iplot:iplot
+    - iplot-widget = iplot_widget:iplot
 
 requirements:
   host:
@@ -36,10 +36,10 @@ dependencies:   # keep this block with only these packages
 
 test:
   imports:
-    - iplot
+    - iplot_widget
 
 about:
-  home: https://github.com/munch-group/iplot.git
+  home: https://github.com/munch-group/iplot-widget.git
   license: MIT
-  dev_url: https://github.com/munch-group/iplot.git
-  doc_url: https://munch-group.org/iplot
+  dev_url: https://github.com/munch-group/iplot-widget.git
+  doc_url: https://munch-group.org/iplot-widget

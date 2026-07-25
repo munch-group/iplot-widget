@@ -16,12 +16,12 @@ jupyter:
 ## Installation
 
 ```bash
-conda install -c munch-group iplot
+conda install -c munch-group iplot-widget
 ```
 
 ## Seaborn
 
-The [](`iplot`) function produces a widget with dropdown menus that lets you change all the specified dimensions of your visualization.
+The [](`iplot_widget.iplot`) function produces a widget with dropdown menus that lets you change all the specified dimensions of your visualization.
 
 You can load an example data frame like this:
 
@@ -34,7 +34,7 @@ data = sns.load_dataset('penguins')
 Display the widget:
 
 ```{python}
-from iplot import iplot
+from iplot_widget import iplot
 
 iplot(data)
 ```
