@@ -10,16 +10,17 @@ source:
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv
-  python_version_independent: true
+  noarch: python
   entry_points:
     - iplot-widget = iplot_widget:iplot
 
 requirements:
   host:
-    - python
+    - python {{ pyproject.get("project").get("requires-python") }}
     - pip
     - setuptools>=65.0
   run:  # your library dependencies
+    - python {{ pyproject.get("project").get("requires-python") }}
     {% for dep in pyproject.get("project").get("dependencies") %}
     - {{ dep.lower() }}
     {% endfor %}
