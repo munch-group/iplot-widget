@@ -4,8 +4,6 @@ environments:
     channels:
     - url: https://conda.anaconda.org/conda-forge/
     - url: https://conda.anaconda.org/munch-group/
-    indexes:
-    - https://pypi.org/simple
     packages:
       linux-64:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/_openmp_mutex-4.5-20_gnu.conda
@@ -286,8 +284,6 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/zipp-4.1.0-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zlib-ng-2.3.3-hceb46e0_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zstd-1.5.7-hb78ec9c_6.conda
-      - pypi: https://files.pythonhosted.org/packages/eb/ee/97ee0b973d072702eb2927c0eb90647cc0e4598663ed8e591c1ca4120dd9/nodejs-0.1.1.tar.gz
-      - pypi: https://files.pythonhosted.org/packages/da/9e/b9b6a3854c613da94d695a2a52ca70ad1f0c65337c1b6e37f5f447964d19/optional-django-0.1.0.tar.gz
       osx-arm64:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/_openmp_mutex-4.5-7_kmp_llvm.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/_python_abi3_support-1.0-hd8ed1ab_3.conda
@@ -561,8 +557,6 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/zipp-4.1.0-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zlib-ng-2.3.3-hed4e4f5_1.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zstd-1.5.7-hbf9d68e_6.conda
-      - pypi: https://files.pythonhosted.org/packages/eb/ee/97ee0b973d072702eb2927c0eb90647cc0e4598663ed8e591c1ca4120dd9/nodejs-0.1.1.tar.gz
-      - pypi: https://files.pythonhosted.org/packages/da/9e/b9b6a3854c613da94d695a2a52ca70ad1f0c65337c1b6e37f5f447964d19/optional-django-0.1.0.tar.gz
 packages:
 - conda: https://conda.anaconda.org/conda-forge/linux-64/_openmp_mutex-4.5-20_gnu.conda
   build_number: 20
@@ -3918,12 +3912,6 @@ packages:
   - pkg:pypi/nest-asyncio2?source=hash-mapping
   size: 15903
   timestamp: 1770973502283
-- pypi: https://files.pythonhosted.org/packages/eb/ee/97ee0b973d072702eb2927c0eb90647cc0e4598663ed8e591c1ca4120dd9/nodejs-0.1.1.tar.gz
-  name: nodejs
-  version: 0.1.1
-  sha256: 4c585fecc51a91b151bbc6dd01c0fb8d93f29f897a8298009205b59b80b52933
-  requires_dist:
-  - optional-django==0.1.0
 - conda: https://conda.anaconda.org/conda-forge/linux-64/nodejs-26.5.0-hc039f44_0.conda
   sha256: 46a11c60f21d5d483d4f8a44ec51da747cc83d14378f55478405b5a0a935d5f7
   md5: aac35b885d19bb6ec2e411611017fc45
@@ -4094,10 +4082,6 @@ packages:
   purls: []
   size: 3102584
   timestamp: 1781069820667
-- pypi: https://files.pythonhosted.org/packages/da/9e/b9b6a3854c613da94d695a2a52ca70ad1f0c65337c1b6e37f5f447964d19/optional-django-0.1.0.tar.gz
-  name: optional-django
-  version: 0.1.0
-  sha256: 77d6b9fb74bda30583e1af4683a39e0af725cea6003252bba75838f4939326c5
 - conda: https://conda.anaconda.org/conda-forge/noarch/overrides-7.7.0-pyhd8ed1ab_1.conda
   sha256: 1840bd90d25d4930d60f57b4f38d4e0ae3f5b8db2819638709c36098c6ba770c
   md5: e51f1e4089cad105b6cac64bd8166587
