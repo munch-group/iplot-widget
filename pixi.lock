@@ -25,6 +25,8 @@ environments:
     channels:
     - url: https://conda.anaconda.org/conda-forge/
     - url: https://conda.anaconda.org/munch-group/
+    indexes:
+    - https://pypi.org/simple
     packages:
       linux-64:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/_openmp_mutex-4.5-20_gnu.conda
@@ -305,6 +307,10 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/websocket-client-1.9.0-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/widgetsnbextension-4.0.15-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/zipp-4.1.0-pyhcf101f3_0.conda
+      - pypi: https://files.pythonhosted.org/packages/1e/77/dc8c558f7593132cf8fefec57c4f60c83b16941c574ac5f619abb3ae7933/dill-0.4.1-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/7d/14/8af79508df038ab05953ecf862420c7f4cc131b1682f0c80cb4f78c58593/quarto-0.1.0-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/7f/74/d2c27e03cb84251dfe7249b8e82923643c6d48fa4883b9476b025e7dc7eb/multiprocess-0.70.19-py313-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/da/91/b9f04ca11a01b9c3ccb1add12cab649894a8faba3a435e783097ec6297f8/vscodenb-1.0.8-py3-none-any.whl
       osx-64:
       - conda: https://conda.anaconda.org/conda-forge/noarch/_python_abi3_support-1.0-hd8ed1ab_3.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/annotated-types-0.8.0-pyhd8ed1ab_0.conda
@@ -578,6 +584,10 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-64/zeromq-4.3.5-h84953be_11.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-64/zlib-ng-2.3.3-h8bce59a_1.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-64/zstd-1.5.7-h3eecb57_6.conda
+      - pypi: https://files.pythonhosted.org/packages/1e/77/dc8c558f7593132cf8fefec57c4f60c83b16941c574ac5f619abb3ae7933/dill-0.4.1-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/7d/14/8af79508df038ab05953ecf862420c7f4cc131b1682f0c80cb4f78c58593/quarto-0.1.0-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/a0/61/af9115673a5870fd885247e2f1b68c4f1197737da315b520a91c757a861a/multiprocess-0.70.19-py314-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/da/91/b9f04ca11a01b9c3ccb1add12cab649894a8faba3a435e783097ec6297f8/vscodenb-1.0.8-py3-none-any.whl
       osx-arm64:
       - conda: https://conda.anaconda.org/conda-forge/noarch/_python_abi3_support-1.0-hd8ed1ab_3.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/annotated-types-0.7.0-pyhd8ed1ab_1.conda
@@ -851,6 +861,10 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zeromq-4.3.5-h10816f8_11.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zlib-ng-2.3.3-hed4e4f5_1.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zstd-1.5.7-hbf9d68e_6.conda
+      - pypi: https://files.pythonhosted.org/packages/1e/77/dc8c558f7593132cf8fefec57c4f60c83b16941c574ac5f619abb3ae7933/dill-0.4.1-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/7d/14/8af79508df038ab05953ecf862420c7f4cc131b1682f0c80cb4f78c58593/quarto-0.1.0-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/7f/74/d2c27e03cb84251dfe7249b8e82923643c6d48fa4883b9476b025e7dc7eb/multiprocess-0.70.19-py313-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/da/91/b9f04ca11a01b9c3ccb1add12cab649894a8faba3a435e783097ec6297f8/vscodenb-1.0.8-py3-none-any.whl
       win-64:
       - conda: https://conda.anaconda.org/conda-forge/noarch/_python_abi3_support-1.0-hd8ed1ab_3.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/annotated-types-0.8.0-pyhd8ed1ab_0.conda
@@ -1119,6 +1133,10 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/win-64/zlib-1.3.2-hfd05255_3.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/zlib-ng-2.3.3-h0261ad2_1.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/zstd-1.5.7-h534d264_6.conda
+      - pypi: https://files.pythonhosted.org/packages/1e/77/dc8c558f7593132cf8fefec57c4f60c83b16941c574ac5f619abb3ae7933/dill-0.4.1-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/7d/14/8af79508df038ab05953ecf862420c7f4cc131b1682f0c80cb4f78c58593/quarto-0.1.0-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/a0/61/af9115673a5870fd885247e2f1b68c4f1197737da315b520a91c757a861a/multiprocess-0.70.19-py314-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/da/91/b9f04ca11a01b9c3ccb1add12cab649894a8faba3a435e783097ec6297f8/vscodenb-1.0.8-py3-none-any.whl
 packages:
 - conda: https://conda.anaconda.org/conda-forge/linux-64/_openmp_mutex-4.5-20_gnu.conda
   build_number: 20
@@ -10069,3 +10087,53 @@ packages:
   purls: []
   size: 388453
   timestamp: 1764777142545
+- pypi: https://files.pythonhosted.org/packages/1e/77/dc8c558f7593132cf8fefec57c4f60c83b16941c574ac5f619abb3ae7933/dill-0.4.1-py3-none-any.whl
+  name: dill
+  version: 0.4.1
+  sha256: 1e1ce33e978ae97fcfcff5638477032b801c46c7c65cf717f95fbc2248f79a9d
+  requires_dist:
+  - objgraph>=1.7.2 ; extra == 'graph'
+  - gprof2dot>=2022.7.29 ; extra == 'profile'
+  requires_python: '>=3.9'
+- pypi: https://files.pythonhosted.org/packages/7d/14/8af79508df038ab05953ecf862420c7f4cc131b1682f0c80cb4f78c58593/quarto-0.1.0-py3-none-any.whl
+  name: quarto
+  version: 0.1.0
+  sha256: 8138fc9d1bee6269a5436837baedc699a262be1478f96444d6f99029f1a114f0
+  requires_dist:
+  - jupyter-core
+  - nbformat
+  - nbclient
+  - ipykernel
+  - pyyaml
+  requires_python: '>=3.6'
+- pypi: https://files.pythonhosted.org/packages/7f/74/d2c27e03cb84251dfe7249b8e82923643c6d48fa4883b9476b025e7dc7eb/multiprocess-0.70.19-py313-none-any.whl
+  name: multiprocess
+  version: 0.70.19
+  sha256: 8d5eb4ec5017ba2fab4e34a747c6d2c2b6fecfe9e7236e77988db91580ada952
+  requires_dist:
+  - dill>=0.4.1
+  requires_python: '>=3.9'
+- pypi: https://files.pythonhosted.org/packages/a0/61/af9115673a5870fd885247e2f1b68c4f1197737da315b520a91c757a861a/multiprocess-0.70.19-py314-none-any.whl
+  name: multiprocess
+  version: 0.70.19
+  sha256: e8cc7fbdff15c0613f0a1f1f8744bef961b0a164c0ca29bdff53e9d2d93c5e5f
+  requires_dist:
+  - dill>=0.4.1
+  requires_python: '>=3.9'
+- pypi: https://files.pythonhosted.org/packages/da/91/b9f04ca11a01b9c3ccb1add12cab649894a8faba3a435e783097ec6297f8/vscodenb-1.0.8-py3-none-any.whl
+  name: vscodenb
+  version: 1.0.8
+  sha256: 11cdb93cfba4628537ae57a9d20a95e7b17dc22f580fe91fefe512cf9cde6e56
+  requires_dist:
+  - ipython
+  - quarto
+  - seaborn
+  - numpy
+  - json5
+  - psutil
+  - rich
+  - tqdm
+  - multiprocess
+  - jupyter
+  - nbconvert
+  requires_python: '>=3.8'
