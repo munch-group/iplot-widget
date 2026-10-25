@@ -52,7 +52,8 @@ for kind in ['reg']:
     AX2FIG[kind] = sns.lmplot
 
 OPTIONS = dict(
-    default_height=5,
+    default_height=4,
+    default_aspect=1.2,
     max_figure_width=10, 
     max_figure_height=5,
     max_facet_height = 3,
@@ -325,6 +326,7 @@ def iplot(data: pandas.DataFrame, x: str=None, y: str=None, hue: str=None, row: 
             max_facet_height = OPTIONS['max_facet_height']
             min_facet_height = OPTIONS['min_facet_height']
             default_height = OPTIONS['default_height']
+            default_aspect = OPTIONS['default_aspect']
 
             # find size of facets
             row_cats, col_cats = 1, 1
@@ -365,9 +367,11 @@ def iplot(data: pandas.DataFrame, x: str=None, y: str=None, hue: str=None, row: 
                 extra_kwargs['height'] = find_facet_size(0, max_square_size) - tolerance
                 # print(OPTIONS['max_figure_height'],  OPTIONS['max_figure_width'],  extra_kwargs['height'])
                 extra_kwargs['col_wrap'] = int(OPTIONS['max_figure_width'] / extra_kwargs['height'])
+                extra_kwargs['aspect'] = 1
 
             else:
                 extra_kwargs['height'] = default_height
+                extra_kwargs['aspect'] = default_aspect
             # print(extra_kwargs['height'])
             # set kind for figure level plots
             kind = selected_plot.__name__.replace('plot', '')
