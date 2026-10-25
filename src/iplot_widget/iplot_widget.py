@@ -271,6 +271,15 @@ def iplot(data: pandas.DataFrame, x: str=None, y: str=None, hue: str=None, row: 
 
     # widget capturing any output from inside the _plot callback
     callback_output = widgets.Output(layout={'background-color': 'red'})
+    callback_output.add_class("callback-output-class")
+    display(HTML("""
+        <style>
+        .callback-output-class {
+            background-color: #F8C8DC !important;
+        }
+        </style>
+        """
+        ))
 
     @callback_output.capture(clear_output=True)    
     def _plot(btn):
@@ -521,4 +530,4 @@ for details and additional arguments to <code>sns.{figure_level_plot_function.__
     display(controls, output, markdown_output, callback_output)
     # display(tab, output, markdown_output, callback_output)
 
-    return callback_output
+    # return callback_output
