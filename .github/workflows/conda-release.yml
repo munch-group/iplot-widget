@@ -61,8 +61,11 @@ jobs:
       - name: Conda environment creation and activation
         uses: conda-incubator/setup-miniconda@v3
         with:
-          miniconda-version: "latest"
-          environment-file: conda-build/build_env.yaml 
+          # Miniforge (conda-forge only): mixing in Anaconda's implicit 'defaults'
+          # channel made the solver hang indefinitely with Miniconda 26.9.4
+          miniforge-version: latest
+          conda-remove-defaults: "true"
+          environment-file: conda-build/build_env.yaml
           auto-update-conda: false
           auto-activate-base: false
           show-channel-urls: true
