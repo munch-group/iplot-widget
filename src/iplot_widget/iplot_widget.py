@@ -54,6 +54,7 @@ for kind in ['reg']:
 OPTIONS = dict(
     default_height=4,
     default_aspect=1.2,
+    default_alpha=1,
     max_figure_width=10, 
     max_figure_height=5,
     max_facet_height = 3,
@@ -215,6 +216,20 @@ def iplot(data: pandas.DataFrame, x: str=None, y: str=None, hue: str=None, row: 
             if v.value != 'none':
                 _kwargs[k] = v.value
 
+
+        needs_both_x_and_y = [
+            'scatterplot',
+            'lineplot',
+            'pointplot',
+            'stripplot',
+            'swarmplot',
+            'boxplot',
+            'violinplot',
+            'boxenplot',
+            'barplot',
+            'countplot',
+        ]
+
         options = []
         for g in OPTIONS['graphics']:
 
@@ -224,6 +239,9 @@ def iplot(data: pandas.DataFrame, x: str=None, y: str=None, hue: str=None, row: 
             if not param:
                 continue
             if not param.issubset(sign):
+                continue
+
+            if g.__name__ in needs_both_x_and_y and not set(['x', 'y']).issubset(param):
                 continue
             
             # more/better filters for graphics.....
@@ -336,6 +354,7 @@ def iplot(data: pandas.DataFrame, x: str=None, y: str=None, hue: str=None, row: 
             min_facet_height = OPTIONS['min_facet_height']
             default_height = OPTIONS['default_height']
             default_aspect = OPTIONS['default_aspect']
+            default_alpha = OPTIONS['default_alpha']
 
             # find size of facets
             row_cats, col_cats = 1, 1
@@ -382,6 +401,10 @@ def iplot(data: pandas.DataFrame, x: str=None, y: str=None, hue: str=None, row: 
             else:
                 extra_kwargs['height'] = default_height
                 extra_kwargs['aspect'] = default_aspect
+            
+            extra_kwargs['alpha'] = default_alpha
+
+            default_alpha
             # print(extra_kwargs['height'])
             # set kind for figure level plots
             kind = selected_plot.__name__.replace('plot', '')
