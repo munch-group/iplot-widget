@@ -92,4 +92,6 @@ jobs:
           user: munch-group
           token: ${{ secrets.ANACONDA_TOKEN }}
           overwrite: true
+          # munch-group channel needed for dependencies published there (e.g. vscodenb)
+          conda_build_args: -c conda-forge -c munch-group
 
