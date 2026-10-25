@@ -229,6 +229,10 @@ def iplot(data: pandas.DataFrame, x: str=None, y: str=None, hue: str=None, row: 
             'barplot',
             'countplot',
         ]
+        cannot_have_both_x_and_y = [
+            'countplot',
+            'histplot',
+        ]
 
         options = []
         for g in OPTIONS['graphics']:
@@ -242,6 +246,8 @@ def iplot(data: pandas.DataFrame, x: str=None, y: str=None, hue: str=None, row: 
                 continue
 
             if g.__name__ in needs_both_x_and_y and not set(['x', 'y']).issubset(param):
+                continue
+            if g.__name__ in cannot_have_both_x_and_y and set(['x', 'y']).issubset(param):
                 continue
             
             # more/better filters for graphics.....
