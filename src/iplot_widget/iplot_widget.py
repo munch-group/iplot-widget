@@ -367,9 +367,10 @@ def iplot(data: pandas.DataFrame, x: str=None, y: str=None, hue: str=None, row: 
                     sq_per_col = OPTIONS['max_figure_height'] // sq_size
                     sq_fitted = sq_per_row * sq_per_col
                     if sq_fitted < col_cats:
-                        return find_facet_size(min_sq_size, sq_size)
+                        facet_size = find_facet_size(min_sq_size, sq_size)
                     else:
-                        return find_facet_size(sq_size, max_sq_size)
+                        facet_size = find_facet_size(sq_size, max_sq_size)
+                    return round(facet_size, 2)
 
                 max_square_size = sqrt(OPTIONS['max_figure_height'] * OPTIONS['max_figure_width'] / col_cats)
 
