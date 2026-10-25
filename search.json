@@ -1,75 +1,46 @@
 [
   {
-    "objectID": "pages/example.html",
-    "href": "pages/example.html",
-    "title": "Example",
+    "objectID": "api/iplot_settings.html",
+    "href": "api/iplot_settings.html",
+    "title": "iplot_settings",
     "section": "",
-    "text": "import pandas as pd\nimport seaborn as sns\nfrom iplot_widget import iplot, iplot_settings",
+    "text": "iplot_widget.iplot_settings(**kwargs)\nCalling iplot.seaborn with only thedata` positional argument will display dropdowns for all plot dimensions and include all axis level seaborn graphics in the plot drowpdown. This function allows you limit the available plot dimensions and/or set their default values. It is also possible to set the plot theme by providing a dictionary with keyword arguments for seaborn.set_theme().\n\n\n\ngraphics : list\n\nA list of seaborn plotting functions to be used. Default is a list of common seaborn plotting functions.\n\ntheme : dict\n\nDictionary with keyword arguments for seaborn.set_theme().\n\nx : str\n\nDefault value for x-axis dropdown.\n\ny : str\n\nDefault value for y-axis dropdown.\n\nhue : str\n\nDefault value for hue dropdown.\n\ncol : str\n\nDefault value for col dropdown.\n\nrow : str\n\nDefault value for row dropdown.\n\n\n\n\n\n\n : None\n\nNone\n\n\n\n\n\nLimit the plot dimensions to ‘x’, ‘y’ and set the available graphics to ‘scatterplot’ and ‘lineplot’.\nimport iplot_widget as pw\npw.set_options(x=None, y=None, graphics=[sns.scatterplot, sns.lineplot])\nDo the same but set the default values for ‘x’ and ‘y’ to ‘flipper_length_mm’ and ‘body_mass_g’ respectively.\nimport iplot_widget as pw\npw.set_options(x='flipper_length_mm', y='body_mass_g', graphics=[sns.scatterplot, sns.lineplot])\nSet the color palette to ‘colorblind’:\nimport iplot_widget as pw\npw.set_options(theme={'palette': 'colorblind'})",
     "crumbs": [
-      "Examples",
-      "Example"
+      "Some section",
+      "iplot_settings"
     ]
   },
   {
-    "objectID": "pages/example.html#dummy-data",
-    "href": "pages/example.html#dummy-data",
-    "title": "Example",
-    "section": "Dummy data",
-    "text": "Dummy data\n\ndata = sns.load_dataset('penguins')\ndata.head()\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nMale\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nFemale\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nFemale\n\n\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n4\nAdelie\nTorgersen\n36.7\n19.3\n193.0\n3450.0\nFemale",
-    "crumbs": [
-      "Examples",
-      "Example"
-    ]
-  },
-  {
-    "objectID": "pages/example.html#show-the-widget",
-    "href": "pages/example.html#show-the-widget",
-    "title": "Example",
-    "section": "Show the widget",
-    "text": "Show the widget\nSelect from the dropdown menus as many data features (columns) you want represented in the plot. The Plot dropdown menu automatically update to only show the plots available to your selection. Click the “Show plot” to render the plot. To reveal the code required to make the plot yourself, click the “Show code for plot”.\n\niplot(data)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nimport seaborn as sns\nsns.set_style({'style': 'darkgrid', 'palette': 'viridis'})                             \ng = sns.displot(data, x='island', y='species', height=5, kind='hist')\ng.set_titles(col_template=\"{col_name}\", row_template=\"{row_name}\")\ng.tight_layout()\n\n\n\n\n\n\n\n\n\niplot(data, x='bill_length_mm', y='bill_depth_mm', hue='species', col='island', row='sex')",
-    "crumbs": [
-      "Examples",
-      "Example"
-    ]
-  },
-  {
-    "objectID": "pages/getting_started.html",
-    "href": "pages/getting_started.html",
-    "title": "Getting started",
+    "objectID": "api/iplot_settings.html#parameters",
+    "href": "api/iplot_settings.html#parameters",
+    "title": "iplot_settings",
     "section": "",
-    "text": "iplot lets you explore the relationships between variables in a dataset using the standard visualization libraries - without writing new code for each plot.",
+    "text": "graphics : list\n\nA list of seaborn plotting functions to be used. Default is a list of common seaborn plotting functions.\n\ntheme : dict\n\nDictionary with keyword arguments for seaborn.set_theme().\n\nx : str\n\nDefault value for x-axis dropdown.\n\ny : str\n\nDefault value for y-axis dropdown.\n\nhue : str\n\nDefault value for hue dropdown.\n\ncol : str\n\nDefault value for col dropdown.\n\nrow : str\n\nDefault value for row dropdown.",
     "crumbs": [
-      "Getting started"
+      "Some section",
+      "iplot_settings"
     ]
   },
   {
-    "objectID": "pages/getting_started.html#installation",
-    "href": "pages/getting_started.html#installation",
-    "title": "Getting started",
-    "section": "Installation",
-    "text": "Installation\nconda install -c munch-group iplot-widget",
+    "objectID": "api/iplot_settings.html#returns",
+    "href": "api/iplot_settings.html#returns",
+    "title": "iplot_settings",
+    "section": "",
+    "text": ": None\n\nNone",
     "crumbs": [
-      "Getting started"
+      "Some section",
+      "iplot_settings"
     ]
   },
   {
-    "objectID": "pages/getting_started.html#seaborn",
-    "href": "pages/getting_started.html#seaborn",
-    "title": "Getting started",
-    "section": "Seaborn",
-    "text": "Seaborn\nThe iplot_widget.iplot function produces a widget with dropdown menus that lets you change all the specified dimensions of your visualization.\nYou can load an example data frame like this:\nimport seaborn as sns\ndata = sns.load_dataset('penguins')\n\nDisplay the widget:\nfrom iplot_widget import iplot\n\niplot(data)",
+    "objectID": "api/iplot_settings.html#examples",
+    "href": "api/iplot_settings.html#examples",
+    "title": "iplot_settings",
+    "section": "",
+    "text": "Limit the plot dimensions to ‘x’, ‘y’ and set the available graphics to ‘scatterplot’ and ‘lineplot’.\nimport iplot_widget as pw\npw.set_options(x=None, y=None, graphics=[sns.scatterplot, sns.lineplot])\nDo the same but set the default values for ‘x’ and ‘y’ to ‘flipper_length_mm’ and ‘body_mass_g’ respectively.\nimport iplot_widget as pw\npw.set_options(x='flipper_length_mm', y='body_mass_g', graphics=[sns.scatterplot, sns.lineplot])\nSet the color palette to ‘colorblind’:\nimport iplot_widget as pw\npw.set_options(theme={'palette': 'colorblind'})",
     "crumbs": [
-      "Getting started"
-    ]
-  },
-  {
-    "objectID": "pages/getting_started.html#learning-more",
-    "href": "pages/getting_started.html#learning-more",
-    "title": "Getting started",
-    "section": "Learning more",
-    "text": "Learning more\n\nSeaborn scientific visualization.\nPandas data structures.\nJupyter notebooks.",
-    "crumbs": [
-      "Getting started"
+      "Some section",
+      "iplot_settings"
     ]
   },
   {
@@ -95,32 +66,44 @@
     ]
   },
   {
-    "objectID": "api/seaborn.html",
-    "href": "api/seaborn.html",
-    "title": "seaborn",
+    "objectID": "pages/example.html",
+    "href": "pages/example.html",
+    "title": "Example",
     "section": "",
-    "text": "iplot.seaborn(\n    data\n    plot=None\n    graphics=None\n    wrap=3\n    theme={'context': 'notebook', 'style': 'darkgrid', 'palette': 'viridis'}\n    **kwargs\n)\nThis function is a wrapper for seaborn plots. It creates a set of dropdowns for the most common parameters in seaborn plots.\n\n\n\ndata : pandas.DataFrame\n\nThe data to be plotted. A pandas.DataFrame.\n\nplot : str = None\n\nThe seaborn plot to be used. Default is 'scatterplot'.\n\ngraphics : list = None\n\nA list of seaborn plotting functions to be used. Default is a list of common seaborn plotting functions.\n\nwrap : int = 3\n\nMax number of dropdowns in each row.\n\ntheme : dict = {'context': 'notebook', 'style': 'darkgrid', 'palette': 'viridis'}\n\nDictionary with keyword arguments for seaborn.set_theme().\n\n****kwargs** : int | str | float = {}\n\nExtra arguments passed to seaborn plotting function, such as x, y, hue, row, col, palette, style. See the seaborn documentation for all possible arguments. list of all possible arguments.\n\n\n\n\n\n\n : IPython.display.DisplayHandle\n\nThe display of two widgets objects: an HBox with the dropdowns and a seaborn plot.\n\n\n\n\n\nThis code will display a scatter plot of flipper_length_mm against body_mass_g with dropdown menus for x, y, and hue variables. Selecting form the dropdowns will update the plot.\nimport seaborn as sns\nimport iplot as pw\ndata = sns.load_dataset('penguins')\npw.seaborn(data, x='flipper_length_mm', y='body_mass_g', hue='species')"
+    "text": "import vscodenb\nfrom iplot_widget import iplot",
+    "crumbs": [
+      "Examples",
+      "Example"
+    ]
   },
   {
-    "objectID": "api/seaborn.html#parameters",
-    "href": "api/seaborn.html#parameters",
-    "title": "seaborn",
-    "section": "",
-    "text": "data : pandas.DataFrame\n\nThe data to be plotted. A pandas.DataFrame.\n\nplot : str = None\n\nThe seaborn plot to be used. Default is 'scatterplot'.\n\ngraphics : list = None\n\nA list of seaborn plotting functions to be used. Default is a list of common seaborn plotting functions.\n\nwrap : int = 3\n\nMax number of dropdowns in each row.\n\ntheme : dict = {'context': 'notebook', 'style': 'darkgrid', 'palette': 'viridis'}\n\nDictionary with keyword arguments for seaborn.set_theme().\n\n****kwargs** : int | str | float = {}\n\nExtra arguments passed to seaborn plotting function, such as x, y, hue, row, col, palette, style. See the seaborn documentation for all possible arguments. list of all possible arguments."
+    "objectID": "pages/example.html#dummy-data",
+    "href": "pages/example.html#dummy-data",
+    "title": "Example",
+    "section": "Dummy data",
+    "text": "Dummy data\n\nimport seaborn as sns\ndata = sns.load_dataset('penguins')\ndata.head()\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nMale\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nFemale\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nFemale\n\n\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n4\nAdelie\nTorgersen\n36.7\n19.3\n193.0\n3450.0\nFemale",
+    "crumbs": [
+      "Examples",
+      "Example"
+    ]
   },
   {
-    "objectID": "api/seaborn.html#returns",
-    "href": "api/seaborn.html#returns",
-    "title": "seaborn",
-    "section": "",
-    "text": ": IPython.display.DisplayHandle\n\nThe display of two widgets objects: an HBox with the dropdowns and a seaborn plot."
+    "objectID": "pages/example.html#show-the-widget",
+    "href": "pages/example.html#show-the-widget",
+    "title": "Example",
+    "section": "Show the widget",
+    "text": "Show the widget\nSelect from the dropdown menus as many data features (columns) you want represented in the plot. The Plot dropdown menu automatically update to only show the plots available to your selection. Click the “Show plot” to render the plot. To reveal the code required to make the plot yourself, click the “Show code for plot”.\n\niplot(data)\n\n\n        \n        \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nimport seaborn as sns\nsns.relplot(data, x='bill_length_mm', y='bill_depth_mm', height=5, kind='scatter')\n\n\nimport seaborn as sns\n#sns.set_style({'style': 'darkgrid', 'palette': 'viridis'})                             \ng = sns.displot(data, x='island', y='species', height=5, kind='hist')\n# g.set_titles(col_template=\"{col_name}\", row_template=\"{row_name}\")\n# g.tight_layout()\n\n\niplot(data, x='bill_length_mm', y='bill_depth_mm', hue='species', col='island', row='sex')",
+    "crumbs": [
+      "Examples",
+      "Example"
+    ]
   },
   {
-    "objectID": "api/seaborn.html#examples",
-    "href": "api/seaborn.html#examples",
-    "title": "seaborn",
+    "objectID": "pages/tutorial/test_iplot.html",
+    "href": "pages/tutorial/test_iplot.html",
+    "title": "Smoke tests for iplot",
     "section": "",
-    "text": "This code will display a scatter plot of flipper_length_mm against body_mass_g with dropdown menus for x, y, and hue variables. Selecting form the dropdowns will update the plot.\nimport seaborn as sns\nimport iplot as pw\ndata = sns.load_dataset('penguins')\npw.seaborn(data, x='flipper_length_mm', y='body_mass_g', hue='species')"
+    "text": "Converted to a pytest module by pixi run test (via jupyter nbconvert --to script). Each test_* function below is picked up by pytest; keep assertions inside functions named test_* so they survive the conversion as real, individually reported tests.\n\nimport matplotlibmatplotlib.use(\"Agg\")  # headless: no display available under nbconvert/pytestimport pandas as pdimport ipywidgets as widgetsfrom iplot_widget import iplot, iplot_settingsimport iplot_widget.iplot_widget as _impl\n\n\ndata = pd.DataFrame({\n    \"x\": [1, 2, 3, 4, 5, 6],\n    \"y\": [2, 4, 1, 3, 5, 2],\n    \"species\": [\"a\", \"a\", \"b\", \"b\", \"c\", \"c\"],\n})\n\n\ndef test_iplot_returns_output_widget():\n    result = iplot(data, x=\"x\", y=\"y\", hue=\"species\")\n    assert isinstance(result, widgets.Output)\n\n\ndef test_iplot_settings_updates_options():\n    original = _impl.OPTIONS[\"max_figure_width\"]\n    try:\n        iplot_settings(max_figure_width=12)\n        assert _impl.OPTIONS[\"max_figure_width\"] == 12\n    finally:\n        iplot_settings(max_figure_width=original)\n\n\ndef test_ax2fig_covers_common_plot_kinds():\n    for kind in [\"scatter\", \"line\", \"hist\", \"box\", \"bar\"]:\n        assert kind in _impl.AX2FIG"
   },
   {
     "objectID": "examples/showcase.html",
@@ -163,6 +146,88 @@
     "title": "Dummy data",
     "section": "Examples",
     "text": "Examples\n\ndefaults = {'x':'gender', 'y':'math score', 'hue':'race/ethnicity', 'plot':'boxplot'}\nmenu_plot(df, defaults, strings_as_cats=True, palette=\"tab10\")\n\n\n\n\n\n\n\n\ndefaults = {'x':'reading score', 'y':'math score', 'hue':'parental education', 'plot':'scatterplot'}\nmenu_plot(df, defaults)\n\n\n\n\n\n\n\n\ndefaults = {'x':'gender', 'y':'math score', 'plot':'swarmplot'}\nmenu_plot(df, defaults)\n\n\n\n\n\n\n\n\ndefaults = {'x':'reading score', 'y':'writing score'}\nmenu_plot(df, defaults, graphics=[sns.scatterplot])\n\n\n\n\n\n\n\n\ndefaults = {'x':'reading score', 'y':'math score', 'hue':'gender'}\nmenu_plot(df, defaults, graphics=[sns.kdeplot])"
+  },
+  {
+    "objectID": "pages/getting_started.html",
+    "href": "pages/getting_started.html",
+    "title": "Getting started",
+    "section": "",
+    "text": "iplot lets you explore the relationships between variables in a dataset using the standard visualization libraries - without writing new code for each plot.",
+    "crumbs": [
+      "Getting started"
+    ]
+  },
+  {
+    "objectID": "pages/getting_started.html#installation",
+    "href": "pages/getting_started.html#installation",
+    "title": "Getting started",
+    "section": "Installation",
+    "text": "Installation\nconda install -c munch-group iplot-widget",
+    "crumbs": [
+      "Getting started"
+    ]
+  },
+  {
+    "objectID": "pages/getting_started.html#seaborn",
+    "href": "pages/getting_started.html#seaborn",
+    "title": "Getting started",
+    "section": "Seaborn",
+    "text": "Seaborn\nThe iplot_widget.iplot function produces a widget with dropdown menus that lets you change all the specified dimensions of your visualization.\nYou can load an example data frame like this:\nimport seaborn as sns\ndata = sns.load_dataset('penguins')\n\nDisplay the widget:\nfrom iplot_widget import iplot\n\niplot(data)",
+    "crumbs": [
+      "Getting started"
+    ]
+  },
+  {
+    "objectID": "pages/getting_started.html#learning-more",
+    "href": "pages/getting_started.html#learning-more",
+    "title": "Getting started",
+    "section": "Learning more",
+    "text": "Learning more\n\nSeaborn scientific visualization.\nPandas data structures.\nJupyter notebooks.",
+    "crumbs": [
+      "Getting started"
+    ]
+  },
+  {
+    "objectID": "pages/seaborn.html#style-and-size",
+    "href": "pages/seaborn.html#style-and-size",
+    "title": "Seaborn",
+    "section": "style, and size",
+    "text": "style, and size\nseaborn.lineplot, s"
+  },
+  {
+    "objectID": "pages/seaborn.html#plot-signatures",
+    "href": "pages/seaborn.html#plot-signatures",
+    "title": "Seaborn",
+    "section": "Plot signatures",
+    "text": "Plot signatures\niplot.seaborn will limit the “Plot” options to the seaborn graphics compatible with the keywords arguments supplied."
+  },
+  {
+    "objectID": "pages/seaborn.html#no-keyword-argumnets",
+    "href": "pages/seaborn.html#no-keyword-argumnets",
+    "title": "Seaborn",
+    "section": "No keyword argumnets",
+    "text": "No keyword argumnets\nIf you know which plots take what parameters\nTODO: I could in priciple make the plot dropdown update to reflect which dimensions are currently chosen in the dimension dropdowns…"
+  },
+  {
+    "objectID": "pages/seaborn.html#facet-plots",
+    "href": "pages/seaborn.html#facet-plots",
+    "title": "Seaborn",
+    "section": "Facet plots",
+    "text": "Facet plots\nrelplot displot catplot lmplot"
+  },
+  {
+    "objectID": "pages/seaborn.html#themes",
+    "href": "pages/seaborn.html#themes",
+    "title": "Seaborn",
+    "section": "Themes",
+    "text": "Themes"
+  },
+  {
+    "objectID": "pages/seaborn.html#kinds",
+    "href": "pages/seaborn.html#kinds",
+    "title": "Seaborn",
+    "section": "Kinds",
+    "text": "Kinds"
   },
   {
     "objectID": "api/iplot.html",
@@ -209,96 +274,31 @@
     ]
   },
   {
-    "objectID": "api/iplot_settings.html",
-    "href": "api/iplot_settings.html",
-    "title": "iplot_settings",
+    "objectID": "api/seaborn.html",
+    "href": "api/seaborn.html",
+    "title": "seaborn",
     "section": "",
-    "text": "iplot_widget.iplot_settings(**kwargs)\nCalling iplot.seaborn with only thedata` positional argument will display dropdowns for all plot dimensions and include all axis level seaborn graphics in the plot drowpdown. This function allows you limit the available plot dimensions and/or set their default values. It is also possible to set the plot theme by providing a dictionary with keyword arguments for seaborn.set_theme().\n\n\n\ngraphics : list\n\nA list of seaborn plotting functions to be used. Default is a list of common seaborn plotting functions.\n\ntheme : dict\n\nDictionary with keyword arguments for seaborn.set_theme().\n\nx : str\n\nDefault value for x-axis dropdown.\n\ny : str\n\nDefault value for y-axis dropdown.\n\nhue : str\n\nDefault value for hue dropdown.\n\ncol : str\n\nDefault value for col dropdown.\n\nrow : str\n\nDefault value for row dropdown.\n\n\n\n\n\n\n : None\n\nNone\n\n\n\n\n\nLimit the plot dimensions to ‘x’, ‘y’ and set the available graphics to ‘scatterplot’ and ‘lineplot’.\nimport iplot_widget as pw\npw.set_options(x=None, y=None, graphics=[sns.scatterplot, sns.lineplot])\nDo the same but set the default values for ‘x’ and ‘y’ to ‘flipper_length_mm’ and ‘body_mass_g’ respectively.\nimport iplot_widget as pw\npw.set_options(x='flipper_length_mm', y='body_mass_g', graphics=[sns.scatterplot, sns.lineplot])\nSet the color palette to ‘colorblind’:\nimport iplot_widget as pw\npw.set_options(theme={'palette': 'colorblind'})",
-    "crumbs": [
-      "Some section",
-      "iplot_settings"
-    ]
+    "text": "iplot.seaborn(\n    data\n    plot=None\n    graphics=None\n    wrap=3\n    theme={'context': 'notebook', 'style': 'darkgrid', 'palette': 'viridis'}\n    **kwargs\n)\nThis function is a wrapper for seaborn plots. It creates a set of dropdowns for the most common parameters in seaborn plots.\n\n\n\ndata : pandas.DataFrame\n\nThe data to be plotted. A pandas.DataFrame.\n\nplot : str = None\n\nThe seaborn plot to be used. Default is 'scatterplot'.\n\ngraphics : list = None\n\nA list of seaborn plotting functions to be used. Default is a list of common seaborn plotting functions.\n\nwrap : int = 3\n\nMax number of dropdowns in each row.\n\ntheme : dict = {'context': 'notebook', 'style': 'darkgrid', 'palette': 'viridis'}\n\nDictionary with keyword arguments for seaborn.set_theme().\n\n****kwargs** : int | str | float = {}\n\nExtra arguments passed to seaborn plotting function, such as x, y, hue, row, col, palette, style. See the seaborn documentation for all possible arguments. list of all possible arguments.\n\n\n\n\n\n\n : IPython.display.DisplayHandle\n\nThe display of two widgets objects: an HBox with the dropdowns and a seaborn plot.\n\n\n\n\n\nThis code will display a scatter plot of flipper_length_mm against body_mass_g with dropdown menus for x, y, and hue variables. Selecting form the dropdowns will update the plot.\nimport seaborn as sns\nimport iplot as pw\ndata = sns.load_dataset('penguins')\npw.seaborn(data, x='flipper_length_mm', y='body_mass_g', hue='species')"
   },
   {
-    "objectID": "api/iplot_settings.html#parameters",
-    "href": "api/iplot_settings.html#parameters",
-    "title": "iplot_settings",
+    "objectID": "api/seaborn.html#parameters",
+    "href": "api/seaborn.html#parameters",
+    "title": "seaborn",
     "section": "",
-    "text": "graphics : list\n\nA list of seaborn plotting functions to be used. Default is a list of common seaborn plotting functions.\n\ntheme : dict\n\nDictionary with keyword arguments for seaborn.set_theme().\n\nx : str\n\nDefault value for x-axis dropdown.\n\ny : str\n\nDefault value for y-axis dropdown.\n\nhue : str\n\nDefault value for hue dropdown.\n\ncol : str\n\nDefault value for col dropdown.\n\nrow : str\n\nDefault value for row dropdown.",
-    "crumbs": [
-      "Some section",
-      "iplot_settings"
-    ]
+    "text": "data : pandas.DataFrame\n\nThe data to be plotted. A pandas.DataFrame.\n\nplot : str = None\n\nThe seaborn plot to be used. Default is 'scatterplot'.\n\ngraphics : list = None\n\nA list of seaborn plotting functions to be used. Default is a list of common seaborn plotting functions.\n\nwrap : int = 3\n\nMax number of dropdowns in each row.\n\ntheme : dict = {'context': 'notebook', 'style': 'darkgrid', 'palette': 'viridis'}\n\nDictionary with keyword arguments for seaborn.set_theme().\n\n****kwargs** : int | str | float = {}\n\nExtra arguments passed to seaborn plotting function, such as x, y, hue, row, col, palette, style. See the seaborn documentation for all possible arguments. list of all possible arguments."
   },
   {
-    "objectID": "api/iplot_settings.html#returns",
-    "href": "api/iplot_settings.html#returns",
-    "title": "iplot_settings",
+    "objectID": "api/seaborn.html#returns",
+    "href": "api/seaborn.html#returns",
+    "title": "seaborn",
     "section": "",
-    "text": ": None\n\nNone",
-    "crumbs": [
-      "Some section",
-      "iplot_settings"
-    ]
+    "text": ": IPython.display.DisplayHandle\n\nThe display of two widgets objects: an HBox with the dropdowns and a seaborn plot."
   },
   {
-    "objectID": "api/iplot_settings.html#examples",
-    "href": "api/iplot_settings.html#examples",
-    "title": "iplot_settings",
+    "objectID": "api/seaborn.html#examples",
+    "href": "api/seaborn.html#examples",
+    "title": "seaborn",
     "section": "",
-    "text": "Limit the plot dimensions to ‘x’, ‘y’ and set the available graphics to ‘scatterplot’ and ‘lineplot’.\nimport iplot_widget as pw\npw.set_options(x=None, y=None, graphics=[sns.scatterplot, sns.lineplot])\nDo the same but set the default values for ‘x’ and ‘y’ to ‘flipper_length_mm’ and ‘body_mass_g’ respectively.\nimport iplot_widget as pw\npw.set_options(x='flipper_length_mm', y='body_mass_g', graphics=[sns.scatterplot, sns.lineplot])\nSet the color palette to ‘colorblind’:\nimport iplot_widget as pw\npw.set_options(theme={'palette': 'colorblind'})",
-    "crumbs": [
-      "Some section",
-      "iplot_settings"
-    ]
-  },
-  {
-    "objectID": "pages/tutorial/test_iplot.html",
-    "href": "pages/tutorial/test_iplot.html",
-    "title": "Smoke tests for iplot",
-    "section": "",
-    "text": "Converted to a pytest module by pixi run test (via jupyter nbconvert --to script). Each test_* function below is picked up by pytest; keep assertions inside functions named test_* so they survive the conversion as real, individually reported tests.\n\nimport matplotlibmatplotlib.use(\"Agg\")  # headless: no display available under nbconvert/pytestimport pandas as pdimport ipywidgets as widgetsfrom iplot_widget import iplot, iplot_settingsimport iplot_widget.iplot_widget as _impl\n\n\ndata = pd.DataFrame({\n    \"x\": [1, 2, 3, 4, 5, 6],\n    \"y\": [2, 4, 1, 3, 5, 2],\n    \"species\": [\"a\", \"a\", \"b\", \"b\", \"c\", \"c\"],\n})\n\n\ndef test_iplot_returns_output_widget():\n    result = iplot(data, x=\"x\", y=\"y\", hue=\"species\")\n    assert isinstance(result, widgets.Output)\n\n\ndef test_iplot_settings_updates_options():\n    original = _impl.OPTIONS[\"max_figure_width\"]\n    try:\n        iplot_settings(max_figure_width=12)\n        assert _impl.OPTIONS[\"max_figure_width\"] == 12\n    finally:\n        iplot_settings(max_figure_width=original)\n\n\ndef test_ax2fig_covers_common_plot_kinds():\n    for kind in [\"scatter\", \"line\", \"hist\", \"box\", \"bar\"]:\n        assert kind in _impl.AX2FIG"
-  },
-  {
-    "objectID": "pages/seaborn.html#style-and-size",
-    "href": "pages/seaborn.html#style-and-size",
-    "title": "Seaborn",
-    "section": "style, and size",
-    "text": "style, and size\nseaborn.lineplot, s"
-  },
-  {
-    "objectID": "pages/seaborn.html#plot-signatures",
-    "href": "pages/seaborn.html#plot-signatures",
-    "title": "Seaborn",
-    "section": "Plot signatures",
-    "text": "Plot signatures\niplot.seaborn will limit the “Plot” options to the seaborn graphics compatible with the keywords arguments supplied."
-  },
-  {
-    "objectID": "pages/seaborn.html#no-keyword-argumnets",
-    "href": "pages/seaborn.html#no-keyword-argumnets",
-    "title": "Seaborn",
-    "section": "No keyword argumnets",
-    "text": "No keyword argumnets\nIf you know which plots take what parameters\nTODO: I could in priciple make the plot dropdown update to reflect which dimensions are currently chosen in the dimension dropdowns…"
-  },
-  {
-    "objectID": "pages/seaborn.html#facet-plots",
-    "href": "pages/seaborn.html#facet-plots",
-    "title": "Seaborn",
-    "section": "Facet plots",
-    "text": "Facet plots\nrelplot displot catplot lmplot"
-  },
-  {
-    "objectID": "pages/seaborn.html#themes",
-    "href": "pages/seaborn.html#themes",
-    "title": "Seaborn",
-    "section": "Themes",
-    "text": "Themes"
-  },
-  {
-    "objectID": "pages/seaborn.html#kinds",
-    "href": "pages/seaborn.html#kinds",
-    "title": "Seaborn",
-    "section": "Kinds",
-    "text": "Kinds"
+    "text": "This code will display a scatter plot of flipper_length_mm against body_mass_g with dropdown menus for x, y, and hue variables. Selecting form the dropdowns will update the plot.\nimport seaborn as sns\nimport iplot as pw\ndata = sns.load_dataset('penguins')\npw.seaborn(data, x='flipper_length_mm', y='body_mass_g', hue='species')"
   }
 ]
