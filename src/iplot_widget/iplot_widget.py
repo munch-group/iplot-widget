@@ -57,7 +57,7 @@ OPTIONS = dict(
     max_figure_height=5,
     max_facet_height = 3,
     min_facet_height = 2,
-    theme = dict(style='darkgrid', palette='viridis'),
+    # theme = dict(style='darkgrid', palette='viridis'),
     graphics=AXIS_LEVEL_GRAPHICS,
     )
 
@@ -175,9 +175,9 @@ def iplot(data: pandas.DataFrame, x: str=None, y: str=None, hue: str=None, row: 
     # # include preset options    
     # kwargs.update(OPTIONS)
 
-    # set theme defaults if none provided
-    if 'theme' in OPTIONS:
-        sns.set_style(OPTIONS['theme'])
+    # # set theme defaults if none provided
+    # if 'theme' in OPTIONS:
+    #     sns.set_style(OPTIONS['theme'])
     # theme.setdefault('style', 'darkgrid')
     # theme.setdefault('palette', 'viridis')
     
@@ -388,8 +388,8 @@ def iplot(data: pandas.DataFrame, x: str=None, y: str=None, hue: str=None, row: 
             with output:
                 # sns.set_theme(rc={"figure.figsize": figsize})
                 g = figure_level_plot_function(data, **_kwargs, **extra_kwargs)
-                g.set_titles(col_template="{col_name}", row_template="{row_name}")
-                g.tight_layout()
+                # g.set_titles(col_template="{col_name}", row_template="{row_name}")
+                # g.tight_layout()
                 output.clear_output()
                 plt.show()
             # matplotlib.rcParams['figure.figsize'] = orig_fig_size
@@ -462,11 +462,8 @@ def iplot(data: pandas.DataFrame, x: str=None, y: str=None, hue: str=None, row: 
 <br>
                              
 ```python
-import seaborn as sns
-sns.set_style({OPTIONS['theme']})                             
-g = {cmd}
-g.set_titles(col_template="{{col_name}}", row_template="{{row_name}}")
-g.tight_layout()
+{'import vscodenb\n' if 'vscodenb' in sys.modules else ''}import seaborn as sns
+{cmd} ;
 ```
 
 <br>    
@@ -486,8 +483,18 @@ for details and additional arguments to <code>sns.{figure_level_plot_function.__
     button = widgets.Button(description='Show plot', layout=button_layout)
     button.on_click(_plot)
     button.add_class("button-spacing-class")
-    display(HTML(
-        "<style>.button-spacing-class {margin-left: 3em; margin-right: 2em;}</style>"
+    display(HTML("""
+        <style>
+        .button-spacing-class {
+            margin-left: 3em; margin-right: 2em;
+
+            font-size: 1em !important;
+            font-weight: bold !important;
+            background-color: #bbbbbb !important;
+
+        }
+        </style>
+        """
         ))
     
     dropdowns_layout = widgets.Layout(max_width='17em', height='auto',) #set width and height

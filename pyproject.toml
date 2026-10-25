@@ -20,6 +20,7 @@ dependencies = [
     "ipywidgets",
     "jupyterlab>=4",
     "seaborn",
+    "vscodenb==1.0.8",
 ]
 
 [project.urls]
