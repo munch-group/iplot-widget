@@ -59,7 +59,7 @@ OPTIONS = dict(
     max_figure_height=5,
     max_facet_height = 3,
     min_facet_height = 2,
-    # theme = dict(style='darkgrid', palette='viridis'),
+    theme = dict(palette='viridis'),
     graphics=AXIS_LEVEL_GRAPHICS,
     )
 
