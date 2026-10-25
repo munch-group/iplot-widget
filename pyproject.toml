@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "iplot-widget"
-version = "0.1.24"
+version = "0.1.25"
 description = "Interactive seaborn plotting widgets for Jupyter"
 authors = [
     {name = "Kasper Munch", email = "kaspermunch@birc.au.dk"}
@@ -20,6 +20,7 @@ dependencies = [
     "ipywidgets",
     "jupyterlab>=4",
     "seaborn",
+    "vscodenb>=1.0.8,<2",
 ]
 
 [project.urls]
@@ -42,7 +43,7 @@ iplot_widget = ["data/*.txt", "data/*.csv", "data/*.pickle", "data/*.h5"]
 
 [tool.pixi.workspace]
 name = "iplot-widget"
-version = "0.1.24"
+version = "0.1.25"
 description = "Interactive seaborn plotting widgets for Jupyter"
 authors = ["Kasper Munch <kaspermunch@birc.au.dk>"]
 channels = ["conda-forge", "munch-group"]
@@ -65,6 +66,7 @@ gh = "*"
 ipython = "*"
 seaborn = "*"
 nbdime = "*"
+iplot-widget = ">=0.1.24,<0.2"
 
 [tool.pixi.environments]
 default = {solve-group = "default"}
