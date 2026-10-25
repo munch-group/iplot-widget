@@ -299,6 +299,27 @@ def iplot(data: pandas.DataFrame, x: str=None, y: str=None, hue: str=None, row: 
         """
         ))
 
+    # def strip_unwanted_msg(change):
+    #     filtered_text = []
+    #     for line in change['new'].splitlines():
+    #         if 'deprecated' not in line.lower():
+    #             filtered_text.append(line)
+    #     filtered_text = '\n'.join(filtered_text)
+
+    #     # Temporarily disconnect the handler to prevent an infinite loop
+    #     callback_output.unobserve(strip_unwanted_msg, names='value')
+        
+    #     # Assign the new modified value
+    #     callback_output.value = filtered_text
+
+    #     # Reconnect the handler
+    #     callback_output.observe(strip_unwanted_msg, names='value')
+
+    # # Watch the 'value' trait for changes
+    # callback_output.observe(strip_unwanted_msg, names='value')
+
+
+
     @callback_output.capture(clear_output=True)    
     def _plot(btn):
         """
@@ -401,10 +422,10 @@ def iplot(data: pandas.DataFrame, x: str=None, y: str=None, hue: str=None, row: 
             else:
                 extra_kwargs['height'] = default_height
                 extra_kwargs['aspect'] = default_aspect
-            
-            extra_kwargs['alpha'] = default_alpha
 
-            default_alpha
+            if 'alpha' in inspect.signature(selected_plot).parameters:
+                extra_kwargs['alpha'] = default_alpha
+
             # print(extra_kwargs['height'])
             # set kind for figure level plots
             kind = selected_plot.__name__.replace('plot', '')
@@ -485,9 +506,16 @@ def iplot(data: pandas.DataFrame, x: str=None, y: str=None, hue: str=None, row: 
             # except Exception as e:
             #     raise e
             
+            printed = set()
             for warn in caught_warnings:
-                if warn.category is not UserWarning:
-                    print(warn.message)
+                if issubclass(warn.category, (UserWarning, DeprecationWarning)):
+                    continue
+                # drop lines mentioning deprecation (e.g. pandas FutureWarnings raised by seaborn)
+                msg = '\n'.join(l for l in str(warn.message).splitlines() if 'deprecated' not in l.lower())
+                # the same warning is often raised once per facet/hue level
+                if msg and msg not in printed:
+                    printed.add(msg)
+                    print(msg)
 
             _kwargs.update(extra_kwargs)
             kw = ', '.join([f"{k}={repr(v)}" for k, v in _kwargs.items()])
@@ -550,6 +578,7 @@ for details and additional arguments to <code>sns.{figure_level_plot_function.__
     # tab.set_title(0, 'Dimensions')
     # tab.set_title(1, 'Aesthetics')
     # display(tab)
+
 
     display(controls, output, markdown_output, callback_output)
     # display(tab, output, markdown_output, callback_output)
